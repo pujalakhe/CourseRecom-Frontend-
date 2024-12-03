@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  //font sizes
+  --font-size-link-medium: 18px;
+  --font-display-xl: 32px;
+  --font-display-l: 28px;
+  --font-display-m: 24px;
+  --font-display-xs: 18px;
+  --font-text-l: 20px;
+  --font-text-m: 16px;
+  --font-text-sm: 14px;
+  --font-text-xs: 12px;
+  --font-text-xxs: 10px;
+  /*font styles*/
+  --font-weight-link-x-small: 600;
+  --font-weight-display-medium-bold: 700;
+  --font-weight-text-x-small: 500;
+  /*paddings*/
+  --padding-button: 5px;
+  --padding-xxs: 6px;
+  --padding-xs: 8px;
+  --padding-sm: 12px;
+  --padding-m: 14px;
+  --padding-l: 16px;
+  --padding-chip: 10px;
+  --padding-xl: 20px;
+  --padding-xxl: 32px;
+  /* margins*/
+  --margin-xxs: 6px;
+  --margin-xs: 8px;
+  --margin-sm: 12px;
+  --margin-m: 16px;
+  --margin-l: 24px;
+  --margin-xl: 28px;
+  --margin-xxl: 32px;
+  // Border-Radius
+  --border-radius-xxs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-xs: 6px;
+  --border-radius-m: 12px;
+  --border-radius-xl: 28px;
+  // gaps
+  --gap-xxs: 4px;
+  --gap-xs: 6px;
+  --gap-sm: 8px;
+  --gap-m: 12px;
+  --gap-l: 16px;
+  //colors
+  /*primary colors*/
+  /**/
+  --color-primary: #e1b16a;
+  --color-primary-bg: #f5e9d7
+  /*Error colors*/
+  --color-error: #ff2300;
+  --color-error-bg: #f9dede;
+  //Success-colors
+  --color-success: #008a00;
+  --color-success-bg: #eaf9de;
+  //Warning-colors
+  --color-warning: #eaac30;
+  --color-warning-bg: #fff8e9;
+  --color-button-disabled: #ececec;
+  /*Grayscale colors*/
+  --color-headers: #6a3600;
+  --color-headers-weak: #8c6396;
+  --color-line: #e1b16a;
+  --color-placeholder: #7a5510;
+  --color-label: #5e433e;
+  --color-grayscale-body: #4e4b66;
+  --color-grayscale-bg: #f4f4f4;
+  --color-grayscale-bg-weak: #f7f7fc;
+  --color-grayscale-service-item: #4e4e4e;
+  --color-border-bottom: #d4d4d5;
+  --color-grayscale-input: #858383;
+  /*Frame Colors*/
+  --color-frame-bg: #f8f8f8;
+  --color-frame-card: #fefefe;
+    //   
+  --color-cross-icon: #333333;
+  --color-searchbar-bg: #fcfcfc;
+  --color-ion-accordion: #f7f7fc;
+  /*linear gradient*/
+  --color-primary-linear-gradient-one:#ffcdb2;
+  --color-primary-linear-gradient-two: #dfaf95;
+  --color-secondary-linear-gradient-one: #fbe0c4;
+  --color-secondary-linear-gradient-two: #f1d6ba;
+  --color-accent-linear-gradient-one: #ffb4a2;
+  --color-accent-linear-gradient-two: #975648;
+  
+}
+
+.font-normal {
+  font-size: var(--font-text-xs); //12px
+  font-weight: var(--font-weight-text-x-small); //500
+}
+
+.semi-bold-l {
+  font-size: var(--font-text-l) !important; //20px
+  font-weight: var(--font-weight-link-x-small) !important; //600
+}
+
+.semi-bold-m {
+  font-size: var(--font-text-m) !important; //16px
+  font-weight: var(--font-weight-link-x-small) !important; //600
+}
+
+.semi-bold-sm {
+  font-size: var(--font-text-sm) !important; //14px
+  font-weight: var(--font-weight-link-x-small) !important; //600
+}
+
+.semi-bold-xs {
+  font-size: var(--font-text-xs) !important; //12px
+  font-weight: var(--font-weight-link-x-small) !important; //600
+}
+
+.card {
+  border-radius: var(--border-radius-xs);
+  background-color: var(--color-frame-card);
+  border: none;
+}
+
+.error-msg {
+  color: var(--color-error);
+  padding-left: var(--padding-l);
+  padding-right: var(--padding-l);
+}
