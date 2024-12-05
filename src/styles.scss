@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
 
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "ngx-toastr/toastr";
+@import "@angular/material/prebuilt-themes/indigo-pink.css"; // Example of a predefined theme
 :root {
   //font sizes
   --font-size-link-medium: 18px;
@@ -51,7 +56,7 @@
   /*primary colors*/
   /**/
   --color-primary: #e1b16a;
-  --color-primary-bg: #f5e9d7
+  --color-primary-bg: #f5e9d7;
   /*Error colors*/
   --color-error: #ff2300;
   --color-error-bg: #f9dede;
@@ -77,18 +82,17 @@
   /*Frame Colors*/
   --color-frame-bg: #f8f8f8;
   --color-frame-card: #fefefe;
-    //   
+  //
   --color-cross-icon: #333333;
   --color-searchbar-bg: #fcfcfc;
   --color-ion-accordion: #f7f7fc;
   /*linear gradient*/
-  --color-primary-linear-gradient-one:#ffcdb2;
+  --color-primary-linear-gradient-one: #ffcdb2;
   --color-primary-linear-gradient-two: #dfaf95;
   --color-secondary-linear-gradient-one: #fbe0c4;
   --color-secondary-linear-gradient-two: #f1d6ba;
   --color-accent-linear-gradient-one: #ffb4a2;
   --color-accent-linear-gradient-two: #975648;
-  
 }
 
 .font-normal {
