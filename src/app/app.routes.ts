@@ -5,7 +5,7 @@ import { HAMMER_LOADER } from '@angular/platform-browser';
 import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },

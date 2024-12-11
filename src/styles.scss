@@ -19,7 +19,8 @@
 // );
 // @include mat.all-component-themes($default-theme);
 *html,
-body {
+body,
+p {
   height: 100%;
   margin: 0;
 }
