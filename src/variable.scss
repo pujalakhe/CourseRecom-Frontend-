@@ -21,7 +21,7 @@
   --padding-sm: 12px;
   --padding-m: 14px;
   --padding-l: 16px;
-  --padding-chip: 10px;
+  --padding-lm: 10px;
   --padding-xl: 20px;
   --padding-xxl: 32px;
   /* margins*/
@@ -49,6 +49,7 @@
   /**/
   --color-primary: #e1b16a;
   --color-primary-bg: #f5e9d7;
+  --color-text-light: #fff;
   /*Error colors*/
   --color-error: #ff2300;
   --color-error-bg: #f9dede;
@@ -71,6 +72,7 @@
   --color-grayscale-service-item: #4e4e4e;
   --color-border-bottom: #d4d4d5;
   --color-grayscale-input: #858383;
+  --color-border-line: #dedede;
   /*Frame Colors*/
   --color-frame-bg: #f8f8f8;
   --color-frame-card: #fefefe;
