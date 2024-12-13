@@ -1,0 +1,54 @@
+.container {
+  margin-top: var(--margin-l);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: var(--padding-xxl);
+  height: 100%;
+  width: 50%;
+  .card {
+    background-color: #f5f5f5;
+    .card-body {
+      .card-title {
+        color: var(--color-label);
+        padding-bottom: var(--padding-xl);
+      }
+      .sub-title {
+        color: var(--color-accent-linear-gradient-two);
+        padding-bottom: var(--padding-xl);
+      }
+      input::placeholder {
+        color: var(--color-grayscale-input);
+      }
+      .eye {
+        position: absolute;
+        right: var(--padding-lm);
+        top: 52%;
+        color: var(--color-headers-weak);
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: var(--font-display-m);
+      }
+      .btn {
+        color: var(--color-text-white);
+        background-color: var(--color-label);
+        padding-left: var(--padding-l);
+        padding-right: var(--padding-l);
+        padding-top: var(--padding-lm);
+        padding-bottom: var(--padding-lm);
+      }
+      .outro-text {
+        color: var(--color-grayscale-input);
+        margin: 0;
+        padding-left: var(--padding-l);
+        padding-right: var(--padding-l);
+      }
+      .que-text {
+        color: var(--color-text-light);
+      }
+      .register {
+        color: var(--color-label);
+        cursor: pointer;
+      }
+    }
+  }
+}
