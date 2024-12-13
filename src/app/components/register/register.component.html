@@ -1,1 +1,167 @@
-<p>register works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title text-center">Register Now</h1>
+      <h4 class="sub-title text-center semi-bold-sm">
+        Unlock your potential with the right course
+      </h4>
+      <form
+        class="mb-3"
+        [formGroup]="registerForm"
+        (ngSubmit)="processRegistration()"
+      >
+        <div class="mb-2">
+          <label for="fname" class="form-label">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fname"
+            placeholder="First Name"
+            formControlName="first_name"
+          />
+          <p
+            class="error-msg font-normal mt-2"
+            *ngIf="
+              registerForm.controls['first_name'].invalid &&
+              registerForm.controls['first_name'].touched
+            "
+          >
+            Enter your first name.
+          </p>
+        </div>
+        <div class="mb-2">
+          <label for="lname" class="form-label">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lname"
+            placeholder="Last Name"
+            formControlName="last_name"
+          />
+          <p
+            class="error-msg font-normal mt-2"
+            *ngIf="
+              registerForm.controls['last_name'].invalid &&
+              registerForm.controls['last_name'].touched
+            "
+          >
+            Enter your last name.
+          </p>
+        </div>
+        <div class="mb-2">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Email address"
+            formControlName="email"
+          />
+          <div
+            class="error-msg font-normal mt-2"
+            *ngIf="
+              registerForm.controls['email'].invalid &&
+              registerForm.controls['email'].touched
+            "
+          >
+            <p *ngIf="registerForm.controls['email'].errors?.['email']">
+              Email is invalid.Please Enter the valid email
+            </p>
+            <p *ngIf="registerForm.controls['email'].errors?.['required']">
+              Email Field can not be empty.
+            </p>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone_no"
+            placeholder="+977 XXXXXXXXXX"
+            formControlName="phone"
+          />
+          <div
+            class="error-msg font-normal"
+            *ngIf="
+              registerForm.controls['phone'].invalid &&
+              registerForm.controls['phone'].touched
+            "
+          >
+            <p *ngIf="registerForm.controls['phone'].errors?.['required']">
+              Phone number Field cannot be empty.
+            </p>
+            <p *ngIf="registerForm.controls['phone'].errors?.['minlength']">
+              Phone number must be exactly 10 digits long.
+            </p>
+            <p *ngIf="registerForm.controls['phone'].errors?.['maxlength']">
+              Phone number must be exactly 10 digits long.
+            </p>
+          </div>
+        </div>
+
+        <label for="password" class="form-label">Password</label>
+        <div class="position-relative">
+          <input
+            [type]="hidePassword ? 'password' : 'text'"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <i
+            class="fa eye"
+            [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="showPassword()"
+          ></i>
+        </div>
+        <p
+          class="error-msg font-normal mt-1"
+          *ngIf="
+            registerForm.controls['password'].invalid &&
+            (registerForm.controls['password'].touched ||
+              registerForm.controls['password'].dirty)
+          "
+        >
+          Password Field can not be empty.
+        </p>
+        <button class="mt-3 btn w-100 text-center">REGISTER</button>
+      </form>
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="border-bottom border-secondary w-25"></div>
+        <p class="semi-bold-sm outro-text">Or Register With</p>
+        <div class="border-bottom border-secondary w-25"></div>
+      </div>
+
+      <div
+        class="goole-auth d-flex align-items-center justify-content-center my-2"
+      >
+        <div
+          class="center"
+          id="g_id_onload"
+          data-client_id="823945019488-tjh5a37mo864co87gorvudledqfvet9h.apps.googleusercontent.com"
+          data-context="signin"
+          data-ux_mode="popup"
+          data-callback="handleCredentialResponse"
+          data-itp_support="true"
+        ></div>
+        <div
+          class="center g_id_signin p-2"
+          data-type="standard"
+          data-shape="pill"
+          data-theme="outline"
+          data-text="continue_with"
+          data-size="large"
+          data-logo_alignment="left"
+        ></div>
+      </div>
+
+      <div
+        class="d-flex felx-row align-items-center justify-content-center mt-2"
+      >
+        <p class="font-normal que-text px-2">Already Have An Account?</p>
+        <p class="font-normal register" (click)="navigateTo()">Login Here</p>
+      </div>
+    </div>
+  </div>
+</div>
