@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.isLoading = true;
       this.toastrService.success('User Login Successful!!', 'Valid User');
+      this.router.navigate(['home']);
     } else {
       this.toastrService.error('User Login Failed!!', 'Invalid User');
     }
