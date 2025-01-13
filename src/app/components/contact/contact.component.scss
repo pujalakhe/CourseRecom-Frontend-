@@ -1,0 +1,122 @@
+/* Contact Section */
+.section {
+  background-color: var(--color-primary-bg);
+}
+.contact-info {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0;
+  padding: var(--padding-xl) 40px;
+  width: 100%;
+  height: 300px;
+  border: 2px solid var(--color-headers);
+  border-radius: var(--border-radius-l);
+  box-shadow: var(--box-shadow-1) var(--color-headers);
+  overflow: hidden;
+  cursor: pointer;
+
+  h2,
+  p,
+  a {
+    color: var(--color-headers);
+  }
+  h2 {
+    margin-bottom: var(--margin-l);
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-m);
+    margin-block: var(--margin-xxs);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    h2,
+    p,
+    i,
+    a {
+      color: var(--color-headers-weak);
+      z-index: 2;
+    }
+  }
+}
+
+/* Contact Form */
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+  width: 100%;
+  background-color: var(--color-secondary-bg);
+  border-radius: var(--border-radius-m);
+
+  .form-input {
+    display: flex;
+    gap: var(--gap-m);
+    width: 100%;
+  }
+
+  .input-field,
+  .input-subject {
+    background: transparent;
+    border: 2px solid #aaa;
+    padding-inline: var(--padding-xl);
+    border-radius: var(--border-radius-m);
+    outline: none;
+    margin-bottom: var(--margin-sm);
+
+    &.input-field {
+      width: 50%;
+      height: 50px;
+    }
+
+    &.input-subject {
+      width: 100%;
+      height: 50px;
+      padding: var(--padding-xl);
+    }
+  }
+
+  textarea {
+    width: 100%;
+    height: 230px;
+    background: transparent;
+    border: 2px solid #aaa;
+    padding: var(--padding-lm) var(--padding-xl);
+    color: var(--color-headers-weak);
+    border-radius: var(--border-radius-m);
+    outline: none;
+    resize: none;
+  }
+
+  .form-button {
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 48px;
+      border: none;
+      background: var(--color-headers);
+      padding: var(--padding-lm) var(--padding-xl);
+      border-radius: var(--border-radius-xl);
+      color: var(--color-text-white);
+      &:hover {
+        background: var(--color-headers-weak);
+      }
+
+      i {
+        font-size: var(nt-display-x);
+        margin-left: var(--margin-sm);
+        offset-rotate: -45deg;
+      }
+    }
+  }
+}
