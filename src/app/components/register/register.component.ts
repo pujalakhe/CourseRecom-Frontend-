@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private registerService: RegisterService
   ) {}
 
   ngOnInit() {
@@ -52,6 +54,9 @@ export class RegisterComponent implements OnInit {
   async processRegistration() {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
+      // Log the form values to the console
+      console.log('Form Values:', this.registerForm.value);
+      this.registerService.signUp(this.registerForm.value);
       this.toastrService.success('User Registered Successfully!!');
       this.router.navigate(['home']);
     } else {
