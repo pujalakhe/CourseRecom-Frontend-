@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      phone: [
+      phone_number: [
         '',
         [
           Validators.required,
@@ -56,9 +56,16 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       // Log the form values to the console
       console.log('Form Values:', this.registerForm.value);
-      this.registerService.signUp(this.registerForm.value);
+      this.registerService.signUp(this.registerForm.value).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
       this.toastrService.success('User Registered Successfully!!');
-      this.router.navigate(['home']);
+      this.router.navigate(['login']);
     } else {
       this.toastrService.error('User Registration Failed!!');
     }
