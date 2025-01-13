@@ -79,22 +79,28 @@
             class="form-control"
             id="phone_no"
             placeholder="+977 XXXXXXXXXX"
-            formControlName="phone"
+            formControlName="phone_number"
           />
           <div
             class="error-msg font-normal"
             *ngIf="
-              registerForm.controls['phone'].invalid &&
-              registerForm.controls['phone'].touched
+              registerForm.controls['phone_number'].invalid &&
+              registerForm.controls['phone_number'].touched
             "
           >
-            <p *ngIf="registerForm.controls['phone'].errors?.['required']">
+            <p
+              *ngIf="registerForm.controls['phone_number'].errors?.['required']"
+            >
               Phone number Field cannot be empty.
             </p>
-            <p *ngIf="registerForm.controls['phone'].errors?.['minlength']">
+            <p
+              *ngIf="registerForm.controls['phone_number'].errors?.['minlength']"
+            >
               Phone number must be exactly 10 digits long.
             </p>
-            <p *ngIf="registerForm.controls['phone'].errors?.['maxlength']">
+            <p
+              *ngIf="registerForm.controls['phone_number'].errors?.['maxlength']"
+            >
               Phone number must be exactly 10 digits long.
             </p>
           </div>
