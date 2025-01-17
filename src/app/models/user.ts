@@ -4,6 +4,7 @@ export interface User {
   email: string;
   password: string;
   phone_number?: string;
+  jwt_token?: string;
 }
 export interface UserResponse {
   message: string;
