@@ -1,18 +1,5 @@
 <app-navbar></app-navbar>
-<!-- <div class="search-container mt-4">
-  <form
-    class="d-flex align-items-center justify-content-center gap-2"
-    role="search"
-  >
-    <input
-      class="search-input"
-      type="search"
-      placeholder="Search For Courses"
-      aria-label="Search"
-    />
-    <button class="btn" type="submit">Search</button>
-  </form>
-</div> -->
+<!-- landing page -->
 <div class="container-fluid">
   <div class="row">
     <div class="col text-container my-auto text-center">
@@ -25,10 +12,20 @@
         <span class="special-txt text-l">Destination</span>
       </p>
 
-      <button class="btn mb-3 mb-lg-0 semi-bold-l">
-        Find Courses
-        <i class="fa fa-arrow-right px-2 fs-3"></i>
-      </button>
+      <div class="search-container mt-4 mb-4 mb-lg-0">
+        <form
+          class="d-flex align-items-center justify-content-center gap-1"
+          role="search"
+        >
+          <input
+            class="search-input"
+            type="search"
+            placeholder="What do you want to learn today?"
+            aria-label="Search"
+          />
+          <button class="btn" type="submit">Search</button>
+        </form>
+      </div>
     </div>
 
     <div class="col img-container mt-lg-5">
@@ -40,3 +37,36 @@
     </div>
   </div>
 </div>
+<!-- Course Categories -->
+<div class="container text-center mt-5 pt-5">
+  <div class="row text-center">
+    <h5 class="text-l category-title mb-5">Browser By Categories</h5>
+  </div>
+  <div class="row px-5 g-3 justify-content-center">
+    <div
+      class="col-3 m-3 px-2 py-2"
+      *ngFor="let course_category of courseCategories; let i = index"
+      [ngStyle]="{ 'background-color': getBackgroundColor(i) }"
+    >
+      <section class="d-flex align-items-center">
+        <img
+          [src]="course_category.course_img"
+          alt="{{ course_category.course_name }} Image"
+          class="course-img mt-2 px-2"
+        />
+        <span class="px-1 semi-bold-sm">{{ course_category.course_name }}</span>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Popular Courses -->
+<section class="popular-course-container mt-5 px-5">
+  <p class="font-normal subtitle px-3 py-1">Top Popular Courses</p>
+  <div class="container px-5 mt-2">
+    <div class="row">
+      <div class="col-8 caption text-l">Top Courses in Demand Right Now</div>
+      <div class="col-3">Column</div>
+    </div>
+  </div>
+</section>
