@@ -68,18 +68,20 @@
   --color-headers: #6a3600;
   --color-headers-weak: #333;
   --color-grayscale-body: #8c6396;
+  --color-text-special: #704fe6;
   --color-line: #e1b16a;
   --color-placeholder: #7a5510;
   --color-label: #5e433e;
-  --color-grayscale-body: #4e4b66;
+  --color-grayscale-body-weak: #4e4b66;
   --color-grayscale-bg: #f4f4f4;
   --color-grayscale-bg-weak: #f7f7fc;
-  --color-grayscale-service-item: #4e4e4e;
   --color-border-bottom: #d4d4d5;
   --color-grayscale-input: #858383;
   --color-border-line: #dedede;
+  --color-btn-dark: #17254e;
   // *box-shadow*/
-  --box-shadow-1: 1px 8px 10px 2px;
+  --box-shadow-border: 1px 8px 10px 2px;
+  --box-shadow-1: 0 4px var(--border-radius-sm) rgba(0, 0, 0, 0.2);
   /*Frame Colors*/
   --color-frame-bg: #f8f8f8;
   --color-frame-card: #fefefe;
@@ -119,6 +121,10 @@
 .semi-bold-xs {
   font-size: var(--font-text-xs) !important; //12px
   font-weight: var(--font-weight-link-x-small) !important; //600
+}
+.text-l {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .card {
