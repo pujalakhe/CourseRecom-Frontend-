@@ -1,3 +1,11 @@
+<!-- Fullscreen loading overlay -->
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="loading-spinner">
+    <!-- You can use any spinner or loading animation here -->
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
+</div>
+<!-- content -->
 <div class="container">
   <div class="card">
     <div class="card-body p-3">
@@ -45,16 +53,24 @@
             (click)="showPassword()"
           ></i>
         </div>
-        <p
-          class="error-msg font-normal mt-1"
+        <div
+          class="error-msg font-normal mt-2"
           *ngIf="
             loginForm.controls['password'].invalid &&
-            (loginForm.controls['password'].touched ||
-              loginForm.controls['password'].dirty)
+            loginForm.controls['password'].touched
           "
         >
-          Password Field can not be empty.
-        </p>
+          <p *ngIf="loginForm.controls['password'].errors?.['required']">
+            Password Field can not be empty.
+          </p>
+          <p
+            *ngIf="
+             loginForm.controls['password'].errors?.['minlength']
+            "
+          >
+            Password must be at least eight characters long.
+          </p>
+        </div>
         <button class="mt-2 btn w-100 text-center" type="submit">LOGIN</button>
       </form>
       <div

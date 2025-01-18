@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   isLoginFormValid: boolean = false;
   hidePassword: boolean = true;
+  isLoading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   initializeForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
   showPassword() {
@@ -47,18 +48,22 @@ export class LoginComponent implements OnInit {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       this.authUser();
-    } else {
-      this.toastrService.error('User Login Failed!!', 'Invalid User');
-      this.router.navigate(['/login']);
     }
   }
   authUser() {
+    this.isLoading = true;
+    console.log(this.isLoading);
+
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
+        this.isLoading = false;
+        console.log(this.isLoading);
+
         this.toastrService.success('User Login Successful!!', 'Valid User');
         this.router.navigate(['home']);
       },
       error: (err) => {
+        this.isLoading = false; // Stop loading
         this.toastrService.error(this.httpErrorService.getErrorMessage(err));
         this.router.navigate(['/login']);
       },

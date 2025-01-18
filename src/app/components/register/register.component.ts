@@ -23,6 +23,7 @@ import { HttpErrorService } from '../../services/http-error.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   hidePassword: boolean = true;
+  isloading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
           Validators.maxLength(10),
         ],
       ],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
   showPassword() {
@@ -58,24 +59,22 @@ export class RegisterComponent implements OnInit {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
       this.registerUser();
-    } else {
-      this.toastrService.error(
-        'Please fill out all required fields correctly.',
-        'Invalid Form'
-      );
     }
   }
   registerUser() {
+    this.isloading = true;
     this.registerService.signUp(this.registerForm.value).subscribe({
       next: (res) => {
         console.log(res);
-
+        this.isloading = false;
         this.toastrService.success('User Registered Successfully!', 'Success');
         this.router.navigate(['login']);
       },
       error: (err) => {
-        const errorMessage = this.httpErrorService.getErrorMessage(err);
-        this.toastrService.error(errorMessage, 'Registration Failed');
+        this.toastrService.error(
+          'Please fill out all required fields correctly.',
+          'Invalid Form'
+        );
       },
     });
   }
