@@ -10,6 +10,8 @@ import {
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from '../../services/register.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorService } from '../../services/http-error.service';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +27,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastrService: ToastrService,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private httpErrorService: HttpErrorService
   ) {}
 
   ngOnInit() {
@@ -54,21 +57,27 @@ export class RegisterComponent implements OnInit {
   async processRegistration() {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
-      // Log the form values to the console
-      console.log('Form Values:', this.registerForm.value);
-      this.registerService.signUp(this.registerForm.value).subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-      this.toastrService.success('User Registered Successfully!!');
-      this.router.navigate(['login']);
+      this.registerUser();
     } else {
-      this.toastrService.error('User Registration Failed!!');
+      this.toastrService.error(
+        'Please fill out all required fields correctly.',
+        'Invalid Form'
+      );
     }
+  }
+  registerUser() {
+    this.registerService.signUp(this.registerForm.value).subscribe({
+      next: (res) => {
+        console.log(res);
+
+        this.toastrService.success('User Registered Successfully!', 'Success');
+        this.router.navigate(['login']);
+      },
+      error: (err) => {
+        const errorMessage = this.httpErrorService.getErrorMessage(err);
+        this.toastrService.error(errorMessage, 'Registration Failed');
+      },
+    });
   }
   navigateTo() {
     this.router.navigate(['login']);

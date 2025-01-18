@@ -3,11 +3,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { CourseCategoryService } from '../../services/course-category.service';
 import { CommonModule } from '@angular/common';
 import { CourseCategory } from '../../models/course-category';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, SearchBarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
