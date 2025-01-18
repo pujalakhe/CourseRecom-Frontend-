@@ -1,0 +1,13 @@
+// poupular course
+.popular-course-container {
+  .subtitle {
+    color: var(--color-grayscale-body);
+    background-color: var(--color-border-bottom);
+    display: inline-block;
+    border-radius: 5px;
+  }
+  .caption {
+    color: var(--color-grayscale-body-weak);
+    font-style: bold;
+  }
+}
