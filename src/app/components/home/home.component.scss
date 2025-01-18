@@ -6,39 +6,10 @@
     }
     .heading {
       color: var(--color-grayscale-body-weak);
-      font-style: bold;
       font-size: 66px;
     }
     .special-txt {
       color: var(--color-text-special);
-    }
-    .search-container {
-      position: relative;
-
-      .fa-search {
-        position: absolute;
-        z-index: 1;
-      }
-
-      .search-input {
-        border: 2px solid var(--color-line);
-        border-radius: 24px;
-        padding: 10px 16px;
-        width: 500px;
-        outline: none;
-      }
-      input::placeholder {
-        font-style: italic; /* Change the font style of the placeholder */
-        font-size: var(--font-text-m); /* Set the font size */
-      }
-
-      .btn {
-        background-color: var(--color-line);
-        color: var(--color-text-white);
-        padding: 10px 16px;
-        border-radius: 24px;
-        border: 1px solid transparent;
-      }
     }
   }
   .img-container {
@@ -68,18 +39,5 @@
       border-radius: 50%;
       object-fit: contain;
     }
-  }
-}
-// poupular course
-.popular-course-container {
-  .subtitle {
-    color: var(--color-grayscale-body);
-    background-color: var(--color-border-bottom);
-    display: inline-block;
-    border-radius: 5px;
-  }
-  .caption {
-    color: var(--color-grayscale-body-weak);
-    font-style: bold;
   }
 }
