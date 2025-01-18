@@ -38,24 +38,17 @@
           >
         </li>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item">
           <a
-            class="nav-link dropdown-toggle align-items-center"
+            class="nav-link"
             routerLink="/course"
             routerLinkActive="active"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
             role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
           >
             Courses
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
         </li>
 
         <li class="nav-item">
@@ -76,14 +69,26 @@
           class="login-link semi-bold-l text-center"
           routerLink="/login"
           routerLinkActive="active"
+          *ngIf="!isAuthenticated"
         >
           Login
         </a>
+        <!-- Logout link -->
+        <btn
+          class="btn semi-bold-l text-center"
+          routerLink="/login"
+          routerLinkActive="active"
+          *ngIf="isAuthenticated"
+          (click)="logout()"
+        >
+          Logout
+        </btn>
 
         <!-- Register Button -->
         <button
           class="btn semi-bold-m px-3 py-2 mt-md-0 mt-2 d-flex align-items-center justify-content-center"
           routerLink="/register"
+          *ngIf="!isAuthenticated"
         >
           Create an account
           <i class="fa fa-arrow-right px-1 fs-5" aria-hidden="true"></i>
