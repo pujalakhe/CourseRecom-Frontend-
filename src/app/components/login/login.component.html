@@ -41,7 +41,7 @@
           />
           <i
             class="fa eye"
-            [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"
+            [ngClass]="hidePassword ? ' fa fa-eye-slash' : 'fa fa-eye'"
             (click)="showPassword()"
           ></i>
         </div>
@@ -55,40 +55,8 @@
         >
           Password Field can not be empty.
         </p>
-
-        <p class="font-normal outro-text text-end mt-1">Forget Password?</p>
-
-        <button class="mt-2 btn w-100 text-center">LOGIN</button>
+        <button class="mt-2 btn w-100 text-center" type="submit">LOGIN</button>
       </form>
-      <div class="d-flex align-items-center justify-content-center">
-        <div class="border-bottom border-secondary w-25"></div>
-        <p class="semi-bold-sm outro-text">Or Login With</p>
-        <div class="border-bottom border-secondary w-25"></div>
-      </div>
-      <!-- Google Authentication -->
-      <div
-        class="goole-auth d-flex align-items-center justify-content-center my-3"
-      >
-        <div
-          class="center mt-2"
-          id="g_id_onload"
-          data-client_id="823945019488-tjh5a37mo864co87gorvudledqfvet9h.apps.googleusercontent.com"
-          data-context="signin"
-          data-ux_mode="popup"
-          data-callback="handleCredentialResponse"
-          data-itp_support="true"
-        ></div>
-        <div
-          class="center g_id_signin p-2"
-          data-type="standard"
-          data-shape="pill"
-          data-theme="outline"
-          data-text="continue_with"
-          data-size="large"
-          data-logo_alignment="left"
-        ></div>
-      </div>
-      <!-- Google Authentication -->
       <div
         class="d-flex felx-row align-items-center justify-content-center mt-2"
       >
