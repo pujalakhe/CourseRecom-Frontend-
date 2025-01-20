@@ -52,8 +52,6 @@ export class LoginComponent implements OnInit {
   }
   authUser() {
     this.isLoading = true;
-    console.log(this.isLoading);
-
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         this.isLoading = false;
@@ -65,7 +63,7 @@ export class LoginComponent implements OnInit {
       error: (err) => {
         this.isLoading = false; // Stop loading
         this.toastrService.error(this.httpErrorService.getErrorMessage(err));
-        this.router.navigate(['/login']);
+        this.router.navigate(['login']);
       },
     });
   }
