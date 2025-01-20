@@ -75,6 +75,7 @@ export class RegisterComponent implements OnInit {
           'Please fill out all required fields correctly.',
           'Invalid Form'
         );
+        this.isloading = false;
       },
     });
   }
