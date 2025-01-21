@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     this.hidePassword = !this.hidePassword;
   }
 
-  async processRegistration() {
+  processRegistration() {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
       this.registerUser();

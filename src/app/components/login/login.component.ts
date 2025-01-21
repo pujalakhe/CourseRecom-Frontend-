@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     this.hidePassword = !this.hidePassword;
   }
 
-  async processLogin() {
+  processLogin() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       this.authUser();
