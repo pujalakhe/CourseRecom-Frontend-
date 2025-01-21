@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { JwtToken, User, UserResponse } from '../models/user';
+import { User, UserResponse } from '../models/user';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
@@ -11,7 +11,9 @@ import { jwtDecode } from 'jwt-decode';
 export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private loggedUser?: string;
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(
+    this.isLoggedIn()
+  );
   isAuthenticated$: Observable<boolean> =
     this.isAuthenticatedSubject.asObservable();
   private httpClient = inject(HttpClient);
@@ -44,13 +46,13 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  isLoggedIn(): boolean {
+  isLoggedIn() {
     return !!localStorage.getItem(this.JWT_TOKEN);
   }
 
   isTokenExpired() {
     const tokens = localStorage.getItem(this.JWT_TOKEN);
-    if (!tokens) return true;
+    if (!tokens) return true; //No means token expired
     const token = JSON.parse(tokens).access;
     const decoded = jwtDecode(token);
     if (!decoded.exp) return true;
@@ -58,15 +60,18 @@ export class AuthService {
     const now = new Date().getTime();
     return expirationDate < now;
   }
-  // Note:required separate endpoint to refresh token currently not available
   refreshToken() {
     let tokens: any = localStorage.getItem(this.JWT_TOKEN);
-    if (!tokens) return true;
-    tokens = JSON.parse(tokens.refresh);
-    let refreshToken = tokens.refresh;
+    if (!tokens) return;
+    const parsedTokens = JSON.parse(tokens);
+    let refreshToken = parsedTokens.refresh;
+    if (!refreshToken) {
+      console.error('Refresh token not found.');
+      return;
+    }
     return this.httpClient
       .post<UserResponse>('http://localhost:8000/token/refresh/', {
-        refreshToken,
+        refresh: refreshToken,
       })
       .pipe(
         tap((response: UserResponse) =>

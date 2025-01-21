@@ -7,14 +7,15 @@ import { ContactComponent } from './components/contact/contact.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CourseComponent } from './components/course/course.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'course', component: CourseComponent },
+  { path: 'course', component: CourseComponent, canActivate: [authGuard] },
   { path: 'search', component: SearchBarComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
   { path: '**', component: PageNotFoundComponent }, //wildcard
 ];
