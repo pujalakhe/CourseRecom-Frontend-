@@ -1,5 +1,4 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { JwtToken } from '../models/user';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const jwtToken = getJwtToken();

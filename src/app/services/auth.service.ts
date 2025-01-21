@@ -17,9 +17,9 @@ export class AuthService {
   isAuthenticated$: Observable<boolean> =
     this.isAuthenticatedSubject.asObservable();
   private httpClient = inject(HttpClient);
+  router = inject(Router);
   private apiUrl = 'http://localhost:8000/login/';
   constructor() {}
-  router = inject(Router);
 
   login(user: User): Observable<UserResponse> {
     return this.httpClient
