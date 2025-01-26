@@ -14,7 +14,7 @@ export class RegisterService {
       'Content-Type': 'application/json',
     });
     return this.httpClient.post<UserResponse>(
-      UtilityService.APIbaseUrl + 'signup/',
+      UtilityService.APIbaseUrl + '/signup/',
       userData,
       {
         headers,
