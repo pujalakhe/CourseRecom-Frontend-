@@ -1,0 +1,9 @@
+<div class="search-results text-center mt-5">
+  <h2 class="special-txt text-l">Search Results</h2>
+  <h4 *ngIf="searchedInput" class="special-text semi-bold-m">
+    You searched for: <span class="special-txt">{{ searchedInput }}</span>
+  </h4>
+</div>
+<app-search-bar
+  [placeholderVal]="'Search  for other courses...'"
+></app-search-bar>
