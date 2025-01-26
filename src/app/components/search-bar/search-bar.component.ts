@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   Form,
   FormBuilder,
@@ -9,9 +9,6 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { HttpErrorService } from '../../services/http-error.service';
-import { SearchPageComponent } from '../search-page/search-page.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -21,6 +18,7 @@ import { SearchPageComponent } from '../search-page/search-page.component';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent {
+  @Input() placeholderVal: string = 'What do you want to learn today?';
   searchQuery: string = '';
   constructor(private router: Router) {}
 
