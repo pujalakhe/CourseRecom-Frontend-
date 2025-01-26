@@ -6,8 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CourseComponent } from './components/course/course.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { authGuard } from './auth.guard';
+import { SearchPageComponent } from './components/search-page/search-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'course', component: CourseComponent, canActivate: [authGuard] },
-  { path: 'search', component: SearchBarComponent },
+  { path: 'search', component: SearchPageComponent },
   { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
   { path: '**', component: PageNotFoundComponent }, //wildcard
 ];
