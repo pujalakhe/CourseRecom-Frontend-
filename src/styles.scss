@@ -28,6 +28,9 @@ h6 {
   border-radius: var(--border-radius-xxs);
   border: 1px solid var(--color-border-line);
 }
+.special-txt {
+  color: var(--color-text-special);
+}
 
 /* Fullscreen overlay to block page interactions */
 .loading-overlay {
