@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User, UserResponse } from '../models/user';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { UtilityService } from './utility.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,12 +19,12 @@ export class AuthService {
     this.isAuthenticatedSubject.asObservable();
   private httpClient = inject(HttpClient);
   router = inject(Router);
-  private apiUrl = 'http://localhost:8000/login/';
+
   constructor() {}
 
   login(user: User): Observable<UserResponse> {
     return this.httpClient
-      .post<UserResponse>(this.apiUrl, user)
+      .post<UserResponse>(UtilityService.APIbaseUrl + '/login', user)
       .pipe(
         tap((response: UserResponse) =>
           this.doLoginUser(user.email, JSON.stringify(response.tokens))
@@ -70,7 +71,7 @@ export class AuthService {
       return;
     }
     return this.httpClient
-      .post<UserResponse>('http://localhost:8000/token/refresh/', {
+      .post<UserResponse>(UtilityService.APIbaseUrl + '/token/refresh', {
         refresh: refreshToken,
       })
       .pipe(
