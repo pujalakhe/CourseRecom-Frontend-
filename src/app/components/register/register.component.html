@@ -1,10 +1,5 @@
 <!-- Fullscreen loading overlay -->
-<div *ngIf="isloading" class="loading-overlay">
-  <div class="loading-spinner">
-    <!-- You can use any spinner or loading animation here -->
-    <i class="fa fa-spinner fa-spin"></i>
-  </div>
-</div>
+<app-loader *ngIf="isloading"></app-loader>
 <!-- content -->
 <div class="container">
   <div class="card">
