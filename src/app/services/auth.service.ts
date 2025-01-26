@@ -24,7 +24,7 @@ export class AuthService {
 
   login(user: User): Observable<UserResponse> {
     return this.httpClient
-      .post<UserResponse>(UtilityService.APIbaseUrl + '/login', user)
+      .post<UserResponse>(UtilityService.APIbaseUrl + '/login/', user)
       .pipe(
         tap((response: UserResponse) =>
           this.doLoginUser(user.email, JSON.stringify(response.tokens))
@@ -71,7 +71,7 @@ export class AuthService {
       return;
     }
     return this.httpClient
-      .post<UserResponse>(UtilityService.APIbaseUrl + '/token/refresh', {
+      .post<UserResponse>(UtilityService.APIbaseUrl + '/token/refresh/', {
         refresh: refreshToken,
       })
       .pipe(
