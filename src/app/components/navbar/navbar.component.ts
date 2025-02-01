@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   authService = inject(AuthService);
   router = inject(Router);
+  links = ['home', 'about', 'courses', 'contact'];
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isLoggedIn();
 
