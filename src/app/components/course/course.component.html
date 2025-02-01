@@ -1,13 +1,68 @@
-<app-navbar></app-navbar>
+<app-header [title]="'Course'" [links]="['home', 'contact']"></app-header>
 <!-- searchbar -->
 <app-search-bar></app-search-bar>
-<!-- Popular Courses -->
-<section class="popular-course-container mt-5 px-5">
-  <p class="font-normal subtitle px-3 py-1">Top Popular Courses</p>
-  <div class="container px-5 mt-2">
-    <div class="row">
-      <div class="col-8 caption text-l">Top Courses in Demand Right Now</div>
-      <div class="col-3">Column</div>
+<!-- wind surf -->
+<div class="container mb-5">
+  <div class="text-center mb-5">
+    <div class="top-badge">POPULAR COURSE</div>
+    <h1 class="course-title">
+      Top Courses In Demand Right Now<br /><span class="special-txt"
+        >Start Your Journey Today</span
+      >
+    </h1>
+    <div class="text-end">
+      <a href="#" class="load-more">
+        Load More Course
+        <i class="fa fa-arrow-right"></i>
+      </a>
     </div>
   </div>
-</section>
+
+  <div class="row g-4">
+    <!-- Course Card 1 -->
+
+    <div class="col-md-4">
+      <div class="course-card">
+        <div class="position-relative">
+          <img
+            src="assets/images/courseimg1.png"
+            alt="Course 1"
+            class="course-image"
+          />
+          <span class="course-category">Digital Marketing</span>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span class="ms-1">4.5k</span>
+            </div>
+            <div class="price">Rs 50.00</div>
+          </div>
+          <h5 class="mb-3">It Statistics Data Science And Business Analysis</h5>
+          <div class="course-info d-flex justify-content-between mb-3">
+            <span><i class="fa fa-book me-2"></i>Lesson 10</span>
+            <span><i class="fa fa-clock-o me-2"></i>19h 30m</span>
+            <span><i class="fa fa-users me-2"></i>Students 20+</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="instructor">
+              <img
+                src="https://via.placeholder.com/40x40"
+                alt="Instructor"
+                class="instructor-img"
+              />
+              <span>Samantha</span>
+            </div>
+            <a href="#" class="enroll-btn">Enroll →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
