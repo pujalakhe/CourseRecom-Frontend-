@@ -1,5 +1,5 @@
 .about-content {
-  padding: 24px 0;
+  padding: var(--padding-lg) 0;
 }
 
 .experience-circle {
@@ -13,23 +13,23 @@
   align-items: center;
   color: white;
   position: absolute;
-  top: 20px;
+  top: var(--padding-xl);
   right: -30px;
 }
 
 .experience-circle h2 {
   margin: 0;
-  font-size: 2rem;
+  font-size: var(--fornt-deisplay-xl);
   font-weight: bold;
 }
 
 .experience-circle span {
-  font-size: 0.9rem;
+  font-size: var(--font-text-sm);
 }
 
 .benefit-heading {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 40px;
+  margin-bottom: var(--margin-l);
 }
 
 .benefit-heading .highlight {
@@ -38,30 +38,30 @@
 
 .benefit-text {
   color: #666;
-  margin-bottom: 2rem;
+  margin-bottom: var(--margin-xxl);
 }
 
 .feature-box {
   background-color: #f8f9fa;
-  padding: 1.5rem;
+  padding: var(--padding-lg);
   border-radius: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: var(--margin-m);
 }
 
 .feature-box h4 {
-  color: #333;
-  margin-bottom: 0.5rem;
+  color: var(--color-headers-weak);
+  margin-bottom: var(--margin-xs);
 }
 
 .feature-box p {
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: var(--margin-m);
 }
 
 .learn-more-btn {
   background-color: var(--primary-color);
   color: white;
-  padding: 0.75rem 2rem;
+  padding: var(--padding-sm) var(--padding-xx);
   border-radius: 25px;
   text-decoration: none;
   display: inline-block;
@@ -75,8 +75,8 @@
 
 .stats-section {
   background-color: var(--secondary-color);
-  padding: 2rem 0;
-  margin: 4rem 0;
+  padding: var(--padding-xx) 0;
+  margin: 64px 0;
 }
 
 .stat-item {
@@ -85,33 +85,33 @@
 }
 
 .stat-item h3 {
-  font-size: 2.5rem;
+  font-size: 40px;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .stat-item p {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
 .testimonials-section {
-  padding: 4rem 0;
+  padding: 64px 0;
   background-color: #f8f0ff;
 }
 
 .testimonial-card {
   background: white;
-  padding: 2rem;
+  padding: 32px;
   border-radius: 15px;
-  margin: 1rem;
+  margin: 16px; /* 1rem = 16px */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-text {
   font-style: italic;
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: 16px; /* 1rem = 16px */
 }
 
 .testimonial-author {
@@ -121,5 +121,5 @@
 
 .testimonial-role {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 14.4px; /* 0.9rem = 14.4px */
 }
