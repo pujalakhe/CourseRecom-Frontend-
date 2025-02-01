@@ -1,0 +1,124 @@
+<app-header
+  [title]="'Course Details'"
+  [links]="['home', 'courses']"
+></app-header>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <img
+        src="https://via.placeholder.com/800x400"
+        alt="Course Image"
+        class="course-image mb-4"
+      />
+      <h2 class="course-title">Web Development Fully Complete Guideline</h2>
+      <div class="course-meta d-flex align-items-center mb-4">
+        <div class="rating me-3">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o"></i>
+          <span class="ms-1">(4.5)</span>
+        </div>
+        <span class="me-3"><i class="fa fa-users me-2"></i>Students 20+</span>
+        <span><i class="fa fa-clock-o me-2"></i>Updated 01.01.24</span>
+      </div>
+
+      <ul class="nav nav-tabs" id="courseTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="overview-tab"
+            data-bs-toggle="tab"
+            href="#overview"
+            >Overview</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="curriculum-tab"
+            data-bs-toggle="tab"
+            href="#curriculum"
+            >Curriculum</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="instructor-tab"
+            data-bs-toggle="tab"
+            href="#instructor"
+            >Instructor</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="reviews-tab"
+            data-bs-toggle="tab"
+            href="#reviews"
+            >Reviews</a
+          >
+        </li>
+      </ul>
+
+      <div class="tab-content" id="courseTabContent">
+        <div class="tab-pane fade show active" id="overview">
+          <h4>COURSE DESCRIPTION</h4>
+          <p class="course-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </p>
+          <h4 class="mt-4">WHAT WILL I LEARN FROM THIS COURSE?</h4>
+          <ul class="course-description">
+            <li>Understanding the fundamentals of web development</li>
+            <li>Building responsive and interactive websites</li>
+            <li>Learning modern web development tools and frameworks</li>
+            <li>Implementing best practices in web development</li>
+          </ul>
+        </div>
+        <!-- Other tab contents would go here -->
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="course-info-card">
+        <div class="info-item">
+          <span>Course Fee</span>
+          <span class="fw-bold">$49 USD</span>
+        </div>
+        <div class="info-item">
+          <span>Instructor</span>
+          <span>John Smith</span>
+        </div>
+        <div class="info-item">
+          <span>Duration</span>
+          <span>12 Weeks</span>
+        </div>
+        <div class="info-item">
+          <span>Skill Level</span>
+          <span>Beginner</span>
+        </div>
+        <div class="info-item">
+          <span>Lectures</span>
+          <span>15</span>
+        </div>
+        <div class="info-item">
+          <span>Enrollment</span>
+          <span>20 Students</span>
+        </div>
+        <div class="info-item">
+          <span>Language</span>
+          <span>English</span>
+        </div>
+        <button class="buy-now-btn">BUY NOW</button>
+      </div>
+    </div>
+  </div>
+</div>
