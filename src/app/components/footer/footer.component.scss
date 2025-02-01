@@ -1,0 +1,136 @@
+.footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 50px 0 20px;
+}
+
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  height: 40px;
+}
+
+.footer-description {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+.footer-social {
+  margin-bottom: 30px;
+}
+
+.social-icon {
+  background-color: #333;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.footer-heading {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #999;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #ff6b6b;
+}
+
+.footer-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.subscribe-form {
+  position: relative;
+}
+
+.subscribe-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.subscribe-btn {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.subscribe-btn:hover {
+  background-color: #ff5252;
+}
+
+.footer-contact {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.footer-contact i {
+  margin-right: 10px;
+  color: #ff6b6b;
+}
+
+.copyright {
+  border-top: 1px solid #333;
+  margin-top: 30px;
+  padding-top: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+.copyright a {
+  color: #ff6b6b;
+  text-decoration: none;
+}
