@@ -4,11 +4,12 @@ import { CourseCategoryService } from '../../services/course-category.service';
 import { CommonModule } from '@angular/common';
 import { CourseCategory } from '../../models/course-category';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, SearchBarComponent],
+  imports: [NavbarComponent, CommonModule, SearchBarComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
