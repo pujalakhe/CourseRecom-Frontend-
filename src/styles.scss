@@ -18,6 +18,10 @@ h6 {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
 .form-label {
   color: var(--color-placeholder);
   font-size: var(--font-text-sm);
