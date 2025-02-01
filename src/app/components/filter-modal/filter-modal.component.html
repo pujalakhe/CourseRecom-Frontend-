@@ -1,0 +1,78 @@
+<div class="modal-overlay" *ngIf="isVisible">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Search filters</h2>
+      <button class="close-btn" (click)="closeModal()">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="filters-grid">
+      <!-- Upload Date Filter -->
+      <div class="filter-column">
+        <h3>Rating</h3>
+        <div class="filter-options">
+          <div
+            class="filter-option"
+            *ngFor="let rating of ratings"
+            [class.selected]="selectedRating === rating.value"
+            (click)="selectRating(rating.value)"
+          >
+            <span class="star-rating">
+              <i
+                class="fa fa-star"
+                *ngFor="let star of [].constructor(rating.stars)"
+              ></i>
+            </span>
+            {{ rating.label }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Level Filter -->
+      <div class="filter-column">
+        <h3>Level</h3>
+        <div class="filter-options">
+          <div
+            class="filter-option"
+            *ngFor="let level of levels"
+            [class.selected]="selectedLevel === level"
+            (click)="selectLevel(level)"
+          >
+            {{ level }}
+          </div>
+        </div>
+      </div>
+
+      <!-- University Filter -->
+      <div class="filter-column">
+        <h3>University</h3>
+        <div class="filter-options">
+          <div
+            class="filter-option"
+            *ngFor="let uni of universities"
+            [class.selected]="selectedUniversity === uni"
+            (click)="selectUniversity(uni)"
+          >
+            {{ uni }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Sort By -->
+      <div class="filter-column">
+        <h3>Sort By</h3>
+        <div class="filter-options">
+          <div
+            class="filter-option"
+            *ngFor="let sort of sortOptions"
+            [class.selected]="selectedSort === sort"
+            (click)="selectSort(sort)"
+          >
+            {{ sort }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
