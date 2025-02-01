@@ -1,9 +1,48 @@
-<div class="search-results text-center mt-5">
-  <h2 class="special-txt text-l">Search Results</h2>
-  <h4 *ngIf="searchedInput" class="special-text semi-bold-m">
-    You searched for: <span class="special-txt">{{ searchedInput }}</span>
-  </h4>
-</div>
+<app-header
+  [title]="'Search Results'"
+  [links]="['home', 'courses']"
+></app-header>
+<h4 *ngIf="searchedInput" class="special-text semi-bold-m text-center py-3">
+  You searched for: <span class="special-txt">{{ searchedInput }}</span>
+</h4>
+
 <app-search-bar
   [placeholderVal]="'Search  for other courses...'"
 ></app-search-bar>
+
+<div class="search-container px-3">
+  <div class="filter-button" (click)="openFilters()">
+    <i class="fa fa-sliders" aria-hidden="true"></i>
+    Customize your Search
+  </div>
+
+  <!-- Your search results here -->
+
+  <app-filter-modal (close)="onFilterClose()" #filterModal> </app-filter-modal>
+</div>
+<!-- No Results Found State -->
+<div>
+  <div class="no-results-container">
+    <div class="no-results-content">
+      <i class="fa fa-search-minus no-results-icon"></i>
+      <h3>No Results Found</h3>
+      <p>We couldn't find any courses matching "{{ searchedInput }}"</p>
+      <div class="suggestions">
+        <h4>Suggestions:</h4>
+        <ul>
+          <li>Check your spelling</li>
+          <li>Try different keywords</li>
+          <li>Try more general keywords</li>
+          <li>Remove filters</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Results -->
+  <div>
+    <!-- Your existing search results content -->
+  </div>
+
+  <app-filter-modal (close)="onFilterClose()" #filterModal></app-filter-modal>
+</div>
