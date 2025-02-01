@@ -1,7 +1,4 @@
 /* Contact Section */
-.section {
-  background-color: var(--color-primary-bg);
-}
 .contact-info {
   position: relative;
   display: flex;
@@ -21,7 +18,7 @@
   h2,
   p,
   a {
-    color: var(--color-headers);
+    color: var(color-text-dark);
   }
   h2 {
     margin-bottom: var(--margin-l);
@@ -43,7 +40,7 @@
     p,
     i,
     a {
-      color: var(--color-headers-weak);
+      color: var(--color-headers);
       z-index: 2;
     }
   }

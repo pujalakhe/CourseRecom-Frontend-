@@ -1,10 +1,11 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
+<app-header [title]="'Contact'" [links]="['home']"></app-header>
 <section class="section mx-auto p-3" id="contact">
   <div class="top-header text-center">
     <h1>Let's Work Together</h1>
     <span class="fs-5">Do you have a Project in your Mind</span>
   </div>
-  <div class="row mt-4">
+  <div class="row mt-4 mb-5">
     <div class="col">
       <div class="contact-info">
         <h2>Find Us <i class="fa fa-level-down"></i></h2>
@@ -24,7 +25,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="form-control">
+      <div class="form-control p-4">
         <div class="form-input">
           <input type="text" class="input-field" placeholder="Your Name" />
           <input type="text" class="input-field" placeholder="Your Email" />
@@ -40,3 +41,4 @@
     </div>
   </div>
 </section>
+<app-footer></app-footer>
