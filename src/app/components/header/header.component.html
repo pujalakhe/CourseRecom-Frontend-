@@ -1,0 +1,11 @@
+<!-- Header Section -->
+<div class="header-section text-center">
+  <h1>{{ title }}</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb justify-content-center mb-1">
+      <li class="breadcrumb-item" *ngFor="let link of links">
+        <a [routerLink]="'/' + link">{{ link | titlecase }}</a>
+      </li>
+    </ol>
+  </nav>
+</div>
