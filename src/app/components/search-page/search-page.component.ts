@@ -58,22 +58,20 @@ export class SearchPageComponent implements OnInit {
   searchCourses() {
     if (!this.searchedInput) return;
     this.isLoading = true;
-    this.courseService.searchCourses(this.searchedInput,this.rating,this.level).subscribe({
-      next: (response) => {
-        console.log(response);
-
-        this.courses = response.results.recommendations;
-        console.log(this.courses);
-
-        this.isDataFound = this.courses.length > 0;
-      },
-      error: (error) => {
-        console.error('Search error', error);
-      },
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
+    this.courseService
+      .searchCourses(this.searchedInput, this.rating, this.level)
+      .subscribe({
+        next: (response) => {
+          this.courses = response.results.recommendations;
+          this.isDataFound = this.courses.length > 0;
+        },
+        error: (error) => {
+          console.error('Search error', error);
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
   }
   openFilters() {
     this.filterModal.show();

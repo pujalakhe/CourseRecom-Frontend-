@@ -11,9 +11,8 @@ export class CourseService {
   constructor(private http: HttpClient) {}
   searchCourses(
     searchQuery: string,
-    rating: number | null,
-    levels?: string | null,
-    universities?: string
+    rating?: number | null,
+    levels?: string | null
   ): Observable<CourseSearchResponse> {
     console.log('Searching for:', searchQuery);
 
