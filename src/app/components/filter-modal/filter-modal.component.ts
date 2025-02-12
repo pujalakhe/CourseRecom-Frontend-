@@ -10,10 +10,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class FilterModalComponent {
   @Output() close = new EventEmitter<void>();
+  
   isVisible = false;
 
   ratings = [
-    { value: 5, stars: 5, label: '4.5 & up' },
+    { value: 4.5, stars: 5, label: '4.5 & up' },
     { value: 4, stars: 4, label: '4.0 & up' },
     { value: 3, stars: 3, label: '3.0 & up' },
   ];
