@@ -17,6 +17,7 @@ import { Course } from '../../models/course';
 import { HttpClient } from '@angular/common/http';
 import { LoaderComponent } from '../loader/loader.component';
 import { CourseComponent } from '../course/course.component';
+import { CourseCardComponent } from '../course-card/course-card.component';
 
 @Component({
   selector: 'app-search-page',
@@ -27,6 +28,7 @@ import { CourseComponent } from '../course/course.component';
     FilterModalComponent,
     HeaderComponent,
     LoaderComponent,
+    CourseCardComponent,
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
@@ -35,7 +37,7 @@ export class SearchPageComponent implements OnInit {
   @ViewChild('filterModal') filterModal!: FilterModalComponent;
   activatedRoute = inject(ActivatedRoute);
   searchedInput: string | null = '';
-  courses: Course[] = [];
+  courseLists: Course[] = [];
   isLoading: boolean = false;
   isDataFound: boolean = true;
   rating: number | null = null;
@@ -62,8 +64,8 @@ export class SearchPageComponent implements OnInit {
       .searchCourses(this.searchedInput, this.rating, this.level)
       .subscribe({
         next: (response) => {
-          this.courses = response.results.recommendations;
-          this.isDataFound = this.courses.length > 0;
+          this.courseLists = response.results.recommendations;
+          this.isDataFound = this.courseLists.length > 0;
         },
         error: (error) => {
           console.error('Search error', error);
@@ -81,6 +83,7 @@ export class SearchPageComponent implements OnInit {
     // Handle filter changes
     this.rating = this.filterModal.selectedRating;
     this.level = this.filterModal.selectedLevel;
+    if (!this.rating && !this.level) return;
     this.fetchCourses();
   }
 }

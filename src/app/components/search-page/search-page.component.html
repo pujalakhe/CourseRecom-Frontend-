@@ -21,14 +21,12 @@
 <app-loader *ngIf="isLoading"></app-loader>
 
 <!-- Your search results here -->
-<div *ngIf="courses.length > 0">
-  <h5 *ngFor="let item of courses">>{{ item.name }}</h5>
+<div *ngIf="courseLists.length > 0">
+  <app-course-card [courses]="courseLists"></app-course-card>
 </div>
 
-
-
 <!-- No Results Found State -->
-<div class="no-results-container" *ngIf="!isDataFound">
+<div class="no-results-container mt-2" *ngIf="!isDataFound">
   <div class="no-results-container">
     <div class="no-results-content">
       <i class="fa fa-search-minus no-results-icon"></i>

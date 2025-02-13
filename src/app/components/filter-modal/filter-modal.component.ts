@@ -10,16 +10,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class FilterModalComponent {
   @Output() close = new EventEmitter<void>();
-  
+
   isVisible = false;
 
   ratings = [
     { value: 4.5, stars: 5, label: '4.5 & up' },
-    { value: 4, stars: 4, label: '4.0 & up' },
-    { value: 3, stars: 3, label: '3.0 & up' },
+    { value: 2.6, stars: 3, label: '2.6 & up' },
+    { value: 1.5, stars: 2, label: '1.5 & up' },
   ];
 
-  levels = ['Beginner', 'Intermediate', 'Advanced'];
+  levels = ['Beginner', 'Intermediate', 'Advanced', 'Conversant'];
 
   universities = [
     'Harvard University',
@@ -35,6 +35,7 @@ export class FilterModalComponent {
   selectedLevel: string | null = null;
   selectedUniversity: string | null = null;
   selectedSort: string | null = null;
+
 
   show() {
     this.isVisible = true;
