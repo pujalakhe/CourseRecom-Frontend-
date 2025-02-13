@@ -18,7 +18,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'courses', component: CourseComponent },
-  { path: 'course-details', component: CourseDetailComponent },
+  { path: 'course-detail', component: CourseDetailComponent },
   { path: 'search', component: SearchPageComponent },
   { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
   { path: '**', component: PageNotFoundComponent }, //wildcard

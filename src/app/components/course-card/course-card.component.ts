@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Course } from '../../models/course';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-card',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CourseCardComponent {
   @Input() courses: Course[] = [];
+  router = inject(Router);
 
   starsArray(rating: number): string[] {
     const fullStars = Math.floor(rating);
@@ -24,5 +26,9 @@ export class CourseCardComponent {
           ? 'fa-star-half-alt'
           : 'fa-star-o'
       );
+  }
+
+  navigateToCourseDetail(courseId: number) {
+    this.router.navigate(['/course-detail'], { queryParams: { id: courseId } });
   }
 }

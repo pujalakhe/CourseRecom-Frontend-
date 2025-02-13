@@ -1,4 +1,4 @@
-<div class="row g-4 mt-3">
+<div class="row g-4 mt-3 px-3">
   <!-- Course Card 1 static card-->
 
   <!-- <div class="col-md-4">
@@ -81,7 +81,12 @@
             />
             <span> Static Samantha</span>
           </div>
-          <a href="#" class="enroll-btn">Enroll →</a>
+          <button
+            class="enroll-btn"
+            (click)="navigateToCourseDetail(course.course_id)"
+          >
+            Enroll →
+          </button>
         </div>
       </div>
     </div>
