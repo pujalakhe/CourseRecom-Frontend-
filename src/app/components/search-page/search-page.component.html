@@ -16,12 +16,17 @@
     Customize your Search
   </div>
 
-  <!-- Your search results here -->
-
   <app-filter-modal (close)="onFilterClose()" #filterModal> </app-filter-modal>
 </div>
+<app-loader *ngIf="isLoading"></app-loader>
+
+<!-- Your search results here -->
+<div *ngIf="courseLists.length > 0">
+  <app-course-card [courses]="courseLists"></app-course-card>
+</div>
+
 <!-- No Results Found State -->
-<div>
+<div class="no-results-container mt-2" *ngIf="!isDataFound">
   <div class="no-results-container">
     <div class="no-results-content">
       <i class="fa fa-search-minus no-results-icon"></i>
@@ -38,11 +43,4 @@
       </div>
     </div>
   </div>
-
-  <!-- Search Results -->
-  <div>
-    <!-- Your existing search results content -->
-  </div>
-
-  <app-filter-modal (close)="onFilterClose()" #filterModal></app-filter-modal>
 </div>

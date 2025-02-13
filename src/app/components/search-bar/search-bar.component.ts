@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -20,14 +21,13 @@ import { Router } from '@angular/router';
 export class SearchBarComponent {
   @Input() placeholderVal: string = 'What do you want to learn today?';
   searchQuery: string = '';
-  constructor(private router: Router) {}
+  constructor(private router: Router, private courseService: CourseService) {}
 
   onSearch() {
     if (this.searchQuery.trim()) {
       this.router.navigate(['/search'], {
         queryParams: { search: this.searchQuery },
       });
-      console.log(this.searchQuery);
     }
   }
 }
