@@ -50,12 +50,12 @@ export class SearchPageComponent implements OnInit {
     this.activatedRoute.queryParamMap.subscribe((param) => {
       this.searchedInput = param.get('search');
       if (this.searchedInput) {
-        this.searchCourses();
+        this.fetchCourses();
       }
     });
   }
 
-  searchCourses() {
+  fetchCourses() {
     if (!this.searchedInput) return;
     this.isLoading = true;
     this.courseService
@@ -81,6 +81,6 @@ export class SearchPageComponent implements OnInit {
     // Handle filter changes
     this.rating = this.filterModal.selectedRating;
     this.level = this.filterModal.selectedLevel;
-    this.searchCourses();
+    this.fetchCourses();
   }
 }
