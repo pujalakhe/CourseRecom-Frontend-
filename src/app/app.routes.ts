@@ -10,6 +10,7 @@ import { authGuard } from './auth.guard';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { AboutComponent } from './components/about/about.component';
+import { UserInterestComponent } from './components/user-interest/user-interest.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'courses', component: CourseComponent },
   { path: 'course-detail', component: CourseDetailComponent },
-  { path: 'search', component: SearchPageComponent },
   { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
+  { path: 'search', component: SearchPageComponent },
+  { path: 'user-interest', component: UserInterestComponent },
   { path: '**', component: PageNotFoundComponent }, //wildcard
 ];

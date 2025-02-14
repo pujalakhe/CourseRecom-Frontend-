@@ -6,7 +6,11 @@ export interface Course {
   rating: number;
   url: string;
   description: string;
+  view_count: number;
+  rating_count: number;
+  average_rating: number | null;
 }
+
 export interface CourseSearchResponse {
   count: number;
   next: number;
@@ -17,4 +21,8 @@ export interface CourseSearchResponse {
 
     recommendations: Course[];
   };
+}
+
+export interface popularCoursesResponse {
+  popular_courses: Course[];
 }

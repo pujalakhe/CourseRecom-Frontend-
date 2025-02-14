@@ -62,9 +62,9 @@
             <ng-container *ngFor="let star of starsArray(course.rating)">
               <i class="fa" [ngClass]="star"></i>
             </ng-container>
-            <span class="ms-1">{{ course.rating }}k</span>
+            <span class="ms-1">{{ course.rating }}</span>
           </div>
-          <div class="price">Rs 50.00</div>
+          <div class="price">Static Rs 50.00</div>
         </div>
         <h5 class="mb-3">{{ course.name }}</h5>
         <div class="course-info d-flex justify-content-between mb-3">

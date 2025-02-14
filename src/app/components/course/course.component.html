@@ -1,4 +1,5 @@
 <app-header [title]="'Course'" [links]="['home', 'contact']"></app-header>
+<app-loader *ngIf="isLoading"></app-loader>
 <!-- searchbar -->
 <app-search-bar></app-search-bar>
 <!-- wind surf -->
@@ -17,8 +18,11 @@
       </a>
     </div>
   </div>
-
-  <!-- //course-card -->
-   <app-course-card></app-course-card>
 </div>
+
+<!-- //course-card -->
+<app-course-card
+  *ngIf="!isLoading"
+  [courses]="popularCourses"
+></app-course-card>
 <app-footer></app-footer>
