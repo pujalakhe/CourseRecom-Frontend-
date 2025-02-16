@@ -7,7 +7,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #007bff;
+  background: var(--color-primary);
   border: none;
   display: flex;
   align-items: center;
@@ -18,12 +18,12 @@
 
   &:hover,
   &:focus {
-    background: #0056b3;
+    background: var(--color-text-special);
     transform: translateY(-1px);
   }
 
   .initials {
-    color: white;
+    color: var(--color-text-dark);
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
