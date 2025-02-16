@@ -3,9 +3,10 @@
 }
 
 .navbar-brand {
-  color: var(--color-label);
+  color: var(--color-label) !important;
   font-size: var(--font-display-l);
   font-weight: var(--font-weight-display-medium-bold);
+  padding-bottom: 0px;
 }
 .navbar-toggler {
   background-color: var(--color-primary);
@@ -31,34 +32,34 @@
     border-bottom: 3px solid var(--color-primary);
   }
 }
-.login-link {
-  color: var(--color-label);
-  text-decoration: none;
-  margin-right: var(--margin-xs);
+// .login-link {
+//   color: var(--color-label);
+//   text-decoration: none;
+//   margin-right: var(--margin-xs);
 
-  &:hover {
-    display: inline-block;
-    border-bottom: 2px solid var(--color-label);
-  }
-}
-.btn {
-  color: var(--color-text-white);
-  background-color: var(--color-headers);
-  border-radius: var(--border-radius-xxs);
-  border-radius: var(--border-radius-sm);
-  border: 1px solid transparent; /* To ensure no extra borders */
-  transition: all 0.3s ease; /* Smooth transition */
-  cursor: pointer; /* Pointer cursor on hover */
-  display: inline-flex; /* Use flexbox for alignment */
-  align-items: center; /* Vertically center align the items */
-  justify-content: center; /* Center align the text and icon horizontally */
-  gap: var(--gap-sm); /* Add space between the text and the icon */
-  &:hover {
-    background-color: var(
-      --color-btn-dark
-    ); /* Lighter shade of the button color */
-    color: var(--color-text-white); /* Darker shade for text */
-    box-shadow: var(--box-shadow-1); /* Subtle shadow effect */
-    transform: translateY(-2px); /* Slight lift effect */
-  }
-}
+//   &:hover {
+//     display: inline-block;
+//     border-bottom: 2px solid var(--color-label);
+//   }
+// }
+// .btn {
+//   color: var(--color-text-white);
+//   background-color: var(--color-headers);
+//   border-radius: var(--border-radius-xxs);
+//   border-radius: var(--border-radius-sm);
+//   border: 1px solid transparent; /* To ensure no extra borders */
+//   transition: all 0.3s ease; /* Smooth transition */
+//   cursor: pointer; /* Pointer cursor on hover */
+//   display: inline-flex; /* Use flexbox for alignment */
+//   align-items: center; /* Vertically center align the items */
+//   justify-content: center; /* Center align the text and icon horizontally */
+//   gap: var(--gap-sm); /* Add space between the text and the icon */
+//   &:hover {
+//     background-color: var(
+//       --color-btn-dark
+//     ); /* Lighter shade of the button color */
+//     color: var(--color-text-white); /* Darker shade for text */
+//     box-shadow: var(--box-shadow-1); /* Subtle shadow effect */
+//     transform: translateY(-2px); /* Slight lift effect */
+//   }
+// }

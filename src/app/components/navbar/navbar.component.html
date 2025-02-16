@@ -17,7 +17,7 @@
       class="collapse navbar-collapse align-items-center text-center"
       id="navbarNav"
     >
-      <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-4">
+      <ul class="navbar-nav m-auto mb-lg-0 gap-4">
         <li class="nav-item" *ngFor="let link of links">
           <a
             class="nav-link"
@@ -28,39 +28,9 @@
           >
         </li>
       </ul>
-      <div
-        class="d-inline-flex flex-column flex-md-row gap-2 align-items-md-center justify-content-md-center mt-lg-0 mt-3"
-      >
-        <!-- Login Link -->
-        <a
-          class="login-link semi-bold-l text-center"
-          routerLink="/login"
-          routerLinkActive="active"
-          *ngIf="!isAuthenticated"
-        >
-          Login
-        </a>
-        <!-- Logout link -->
-        <btn
-          class="btn semi-bold-l text-center"
-          routerLink="/login"
-          routerLinkActive="active"
-          *ngIf="isAuthenticated"
-          (click)="logout()"
-        >
-          Logout
-        </btn>
-
-        <!-- Register Button -->
-        <button
-          class="btn semi-bold-m px-3 py-2 mt-md-0 mt-2 d-flex align-items-center justify-content-center"
-          routerLink="/register"
-          *ngIf="!isAuthenticated"
-        >
-          Create an account
-          <i class="fa fa-arrow-right px-1 fs-5" aria-hidden="true"></i>
-        </button>
-      </div>
+    </div>
+    <div class="nav-item d-flex align-items-center">
+      <app-user-profile></app-user-profile>
     </div>
   </div>
 </nav>

@@ -1,0 +1,58 @@
+<!-- User Profile Dropdown -->
+<div class="dropdown" *ngIf="isAuthenticated">
+  <button
+    class="user-avatar dropdown-toggle"
+    type="button"
+    id="userDropdown"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <span class="initials">{{userInitials}}</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+    <li>
+      <div class="dropdown-header">
+        <span class="user-name">{{userName}}</span>
+      </div>
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li>
+      <a class="dropdown-item" routerLink="/history"
+        ><i class="fa fa-history" aria-hidden="true"></i>History list</a
+      >
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="/favorites"
+        ><i class="fa fa-heart-o" aria-hidden="true"></i>Favorite list</a
+      >
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li>
+      <a class="dropdown-item" (click)="signOut()"
+        ><i class="fa fa-sign-out" aria-hidden="true"></i>Sign out</a
+      >
+    </li>
+  </ul>
+</div>
+
+<!-- Login Link for non-authenticated users -->
+<div
+  class="d-inline-flex flex-column flex-md-row gap-2 align-items-md-center justify-content-md-center mt-lg-0 mt-3 align-items-center"
+>
+  <button
+    class="btn semi-bold-m text-center px-2 py-2"
+    routerLink="/login"
+    routerLinkActive="active"
+    *ngIf="!isAuthenticated"
+  >
+    Login
+  </button>
+  <button
+    class="btn semi-bold-m px-2 py-2 mt-md-0 mt-2 d-flex align-items-center justify-content-center"
+    routerLink="/register"
+    routerLinkActive="active"
+    *ngIf="!isAuthenticated"
+  >
+    Register
+  </button>
+</div>

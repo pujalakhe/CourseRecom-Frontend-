@@ -1,0 +1,99 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #007bff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background: #0056b3;
+    transform: translateY(-1px);
+  }
+
+  .initials {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+.dropdown-menu {
+  min-width: 200px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  .dropdown-header {
+    padding: 0.5rem 1rem;
+
+    .user-name {
+      font-weight: 500;
+      color: #333;
+    }
+  }
+
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover,
+    &:focus {
+      background-color: #f8f9fa;
+      color: #333;
+    }
+  }
+}
+
+.login-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+
+  &:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+}
+
+.btn {
+  color: var(--color-text-white);
+  background-color: var(--color-headers);
+  border-radius: var(--border-radius-xxs);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid transparent; /* To ensure no extra borders */
+  transition: all 0.3s ease; /* Smooth transition */
+  cursor: pointer; /* Pointer cursor on hover */
+  display: inline-flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center align the items */
+  justify-content: center; /* Center align the text and icon horizontally */
+  gap: var(--gap-sm); /* Add space between the text and the icon */
+  &:hover {
+    background-color: var(
+      --color-btn-dark
+    ); /* Lighter shade of the button color */
+    color: var(--color-text-white); /* Darker shade for text */
+    box-shadow: var(--box-shadow-1); /* Subtle shadow effect */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+}
