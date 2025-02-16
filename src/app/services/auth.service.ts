@@ -31,6 +31,7 @@ export class AuthService {
   );
   isAuthenticated$: Observable<boolean> =
     this.isAuthenticatedSubject.asObservable();
+
   private httpClient = inject(HttpClient);
   router = inject(Router);
 
@@ -66,7 +67,15 @@ export class AuthService {
   }
 
   logout() {
+    // Get current user before removing auth data
+    const currentUser = this.getCurrentUser();
+    if (currentUser) {
+      // Remove user-specific interests
+      localStorage.removeItem(`interests_${currentUser.id}`);
+    }
+
     localStorage.removeItem(this.AUTH_DATA);
+
     this.loggedUser = undefined;
     this.isAuthenticatedSubject.next(false);
     this.router.navigate(['/home']);
