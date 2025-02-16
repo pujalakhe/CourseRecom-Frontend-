@@ -12,12 +12,17 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   }
   return next(req);
 };
+
 //get the JWT_TOKEN
 function getJwtToken(): string | null {
-  let tokens: any = localStorage.getItem('JWT_TOKEN');
+  try {
+    const authData = localStorage.getItem('AUTH_DATA');
+    if (!authData) return null;
 
-  if (!tokens) return null;
-  const token = JSON.parse(tokens).access;
-
-  return token;
+    const parsedData = JSON.parse(authData);
+    return parsedData.tokens.access;
+  } catch (error) {
+    console.error('Error getting access token:', error);
+    return null;
+  }
 }
