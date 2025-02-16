@@ -11,6 +11,7 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { AboutComponent } from './components/about/about.component';
 import { UserInterestComponent } from './components/user-interest/user-interest.component';
+import { UserHistoryComponent } from './components/user-history/user-history.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
   { path: 'search', component: SearchPageComponent, canActivate: [authGuard] },
   { path: 'user-interest', component: UserInterestComponent },
+  { path: 'user-history', component: UserHistoryComponent },
   { path: '**', component: PageNotFoundComponent }, //wildcard
 ];

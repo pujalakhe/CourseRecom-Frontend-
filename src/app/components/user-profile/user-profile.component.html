@@ -7,17 +7,17 @@
     data-bs-toggle="dropdown"
     aria-expanded="false"
   >
-    <span class="initials">{{userInitials}}</span>
+    <span class="initials">{{ userInitials }}</span>
   </button>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
     <li>
       <div class="dropdown-header">
-        <span class="user-name">{{userName}}</span>
+        <span class="user-name">{{ userName }}</span>
       </div>
     </li>
     <li><hr class="dropdown-divider" /></li>
     <li>
-      <a class="dropdown-item" routerLink="/history"
+      <a class="dropdown-item" routerLink="/user-history"
         ><i class="fa fa-history" aria-hidden="true"></i>History list</a
       >
     </li>
