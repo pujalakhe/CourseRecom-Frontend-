@@ -1,1 +1,46 @@
-<div class="category-container">hell</div>
+<div class="interest-container">
+  <h2>Choose Your Interests</h2>
+  <p class="subtitle">
+    Select categories and skill levels to get personalized course
+    recommendations
+  </p>
+
+  <div class="categories-grid">
+    @for (category of categories; track category.id) {
+    <div
+      class="category-card"
+      [class.selected]="category.selected"
+      (click)="toggleCategory(category)"
+    >
+      <div class="category-header">
+        <span class="category-name">{{ category.name }}</span>
+        <span class="selection-indicator">
+          <i
+            class="fa"
+            [class.fa-circle-thin]="category.selected"
+            [class.fa-circle-thin]="!category.selected"
+          ></i>
+        </span>
+      </div>
+
+      @if (category.selected && category.id !== 'all') {
+      <div class="skill-levels">
+        @for (level of skillLevels; track level) {
+        <button
+          class="skill-btn"
+          [class.active]="category.skillLevel === level"
+          (click)="updateSkillLevel(category, level); $event.stopPropagation()"
+        >
+          {{ level | titlecase }}
+        </button>
+        }
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <div class="action-buttons">
+    <button class="save-btn" (click)="saveInterests()">Save Interests</button>
+  </div>
+</div>
