@@ -36,16 +36,15 @@ export class AuthService {
 
   constructor() {}
 
-  login(user: User): Observable<LoginResponse> {
+  login(user: User, url: string): Observable<LoginResponse> {
     return this.httpClient
-      .post<LoginResponse>(UtilityService.APIbaseUrl + '/login/', user)
+      .post<LoginResponse>(UtilityService.APIbaseUrl + `${url}`, user)
       .pipe(
         tap((response: LoginResponse) => {
           this.doLoginUser(response);
         })
       );
   }
-
   private doLoginUser(response: LoginResponse) {
     this.loggedUser = response.user.email;
     this.storeAuthData(response);
