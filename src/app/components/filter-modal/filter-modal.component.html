@@ -58,21 +58,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Sort By -->
-      <div class="filter-column">
-        <h3>Sort By</h3>
-        <div class="filter-options">
-          <div
-            class="filter-option"
-            *ngFor="let sort of sortOptions"
-            [class.selected]="selectedSort === sort"
-            (click)="selectSort(sort)"
-          >
-            {{ sort }}
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

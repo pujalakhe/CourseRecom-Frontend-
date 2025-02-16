@@ -22,20 +22,18 @@ export class FilterModalComponent {
   levels = ['Beginner', 'Intermediate', 'Advanced', 'Conversant'];
 
   universities = [
-    'Harvard University',
-    'MIT',
-    'Stanford University',
-    'Oxford University',
-    'Cambridge University',
+    'University of Michigan',
+    'Michigan State University',
+    'Google Cloud',
+    'University of Washington',
+    'Rice University',
+    'The Chinese University of Hong Kong',
+    'University of Washington',
   ];
-
-  sortOptions = ['Relevance', 'Upload date', 'Rating', 'Popularity'];
 
   selectedRating: number | null = null;
   selectedLevel: string | null = null;
   selectedUniversity: string | null = null;
-  selectedSort: string | null = null;
-
 
   show() {
     this.isVisible = true;
@@ -57,9 +55,5 @@ export class FilterModalComponent {
   selectUniversity(university: string) {
     this.selectedUniversity =
       this.selectedUniversity === university ? null : university;
-  }
-
-  selectSort(sort: string) {
-    this.selectedSort = this.selectedSort === sort ? null : sort;
   }
 }

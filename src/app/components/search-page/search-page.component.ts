@@ -42,6 +42,7 @@ export class SearchPageComponent implements OnInit {
   isDataFound: boolean = true;
   rating: number | null = null;
   level: string | null = null;
+  university: string | null = '';
 
   constructor(
     private filterService: FilterService,
@@ -61,7 +62,12 @@ export class SearchPageComponent implements OnInit {
     if (!this.searchedInput) return;
     this.isLoading = true;
     this.courseService
-      .searchCourses(this.searchedInput, this.rating, this.level)
+      .searchCourses(
+        this.searchedInput,
+        this.rating,
+        this.level,
+        this.university
+      )
       .subscribe({
         next: (response) => {
           this.courseLists = response.results.recommendations;
@@ -83,7 +89,9 @@ export class SearchPageComponent implements OnInit {
     // Handle filter changes
     this.rating = this.filterModal.selectedRating;
     this.level = this.filterModal.selectedLevel;
-    if (!this.rating && !this.level) return;
+    this.university= this.filterModal.selectedUniversity;
+
+    if (!this.rating && !this.level && !this.university) return;
     this.fetchCourses();
   }
 }
