@@ -72,5 +72,6 @@ export class UserProfileComponent implements OnInit {
   }
   signOut(): void {
     this.authService.logout();
+   
   }
 }

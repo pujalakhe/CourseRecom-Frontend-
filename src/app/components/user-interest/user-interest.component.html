@@ -5,6 +5,21 @@
     recommendations
   </p>
 
+  <div class="toggle-all">
+    <button
+      class="toggle-btn"
+      (click)="toggleAll()"
+      [class.active]="allSelected"
+    >
+      <i
+        class="fa"
+        [class.fa-check-circle]="allSelected"
+        [class.fa-circle-thin]="!allSelected"
+      ></i>
+      {{ allSelected ? "Deselect All" : "Select All" }}
+    </button>
+  </div>
+
   <div class="categories-grid">
     @for (category of categories; track category.id) {
     <div
@@ -17,13 +32,13 @@
         <span class="selection-indicator">
           <i
             class="fa"
-            [class.fa-circle-thin]="category.selected"
+            [class.fa-check-circle]="category.selected"
             [class.fa-circle-thin]="!category.selected"
           ></i>
         </span>
       </div>
 
-      @if (category.selected && category.id !== 'all') {
+      @if (category.selected) {
       <div class="skill-levels">
         @for (level of skillLevels; track level) {
         <button
@@ -41,6 +56,9 @@
   </div>
 
   <div class="action-buttons">
-    <button class="save-btn" (click)="saveInterests()">Save Interests</button>
+    <button class="save-btn" (click)="saveInterests()">
+      <i class="fa fa-save"></i>
+      Save Interests
+    </button>
   </div>
 </div>
