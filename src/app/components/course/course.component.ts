@@ -38,6 +38,7 @@ export class CourseComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching courses:', error);
+        this.isLoading = false;
       },
       complete: () => {
         this.isLoading = false;
