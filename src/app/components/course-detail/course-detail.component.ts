@@ -5,11 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../../services/course.service';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
+import { StarRatingComponent } from "../star-rating/star-rating.component";
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, LoaderComponent],
+  imports: [HeaderComponent, CommonModule, LoaderComponent, StarRatingComponent],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss',
 })
@@ -68,11 +69,12 @@ export class CourseDetailComponent implements OnInit {
       );
   }
 
-  // getSkillsList(): string[] {
-  //   return (
-  //     this.courseDetail?.skills?.split(',').map((skill) => skill.trim()) || []
-  //   );
-  // }
+  getSkillsList(): string[] {
+    return (
+      this.courseDetail[0]?.skills?.split(',').map((skill) => skill.trim()) ||
+      []
+    );
+  }
 
   formatRating(rating: number | null): string {
     return rating ? rating.toFixed(1) : 'No ratings yet';

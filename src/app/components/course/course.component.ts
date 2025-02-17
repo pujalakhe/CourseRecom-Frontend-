@@ -7,6 +7,7 @@ import { CourseService } from '../../services/course.service';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
 import { Course } from '../../models/course';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-course',
@@ -23,18 +24,37 @@ import { Course } from '../../models/course';
   styleUrl: './course.component.scss',
 })
 export class CourseComponent implements OnInit {
-  popularCourses: Course[] = [];
+  courses: Course[] = [];
   isLoading: boolean = false;
-  constructor(private courseService: CourseService) {}
+  error: string = '';
+  isLoggedIn: boolean = false;
+  currentUserId: string | null = null;
+  constructor(
+    private courseService: CourseService,
+    private authService: AuthService
+  ) {}
   ngOnInit() {
-    this.fetchPopularCourses();
+    this.isLoggedIn = this.authService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const currentUser = this.authService.getCurrentUser();
+      if (currentUser?.id) {
+        this.currentUserId = currentUser.id.toString();
+        this.fetchRecommendedCourses();
+      } else {
+        // Fallback to popular courses if user ID is not available
+        this.error = 'Unable to load user data';
+        this.fetchPopularCourses();
+      }
+    } else {
+      this.fetchPopularCourses();
+    }
   }
   async fetchPopularCourses() {
     this.isLoading = true;
     await this.courseService.getPopularCourses().subscribe({
       next: (response) => {
         this.isLoading = false;
-        this.popularCourses = response.popular_courses;
+        this.courses = response.popular_courses;
       },
       error: (error) => {
         console.error('Error fetching courses:', error);
@@ -44,5 +64,30 @@ export class CourseComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+  fetchRecommendedCourses() {
+    if (!this.currentUserId) {
+      this.error = 'User ID not available';
+      this.fetchPopularCourses();
+      return;
+    }
+
+    this.isLoading = true;
+    this.error = '';
+
+    this.courseService
+      .getContentBasedRecommendations(this.currentUserId)
+      .subscribe({
+        next: (response) => {
+          this.courses = response.results.recommendations;
+          this.isLoading = false;
+        },
+        error: (error) => {
+          console.error('Error fetching recommended courses:', error);
+          // this.error = 'Failed to load recommended courses';
+          // Fallback to popular courses if recommendations fail
+          this.fetchPopularCourses();
+        },
+      });
   }
 }
