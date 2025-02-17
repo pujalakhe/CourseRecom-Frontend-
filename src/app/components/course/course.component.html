@@ -1,15 +1,22 @@
 <app-header [title]="'Course'" [links]="['home', 'contact']"></app-header>
 <app-loader *ngIf="isLoading"></app-loader>
-<!-- searchbar -->
-<app-search-bar></app-search-bar>
-<!-- wind surf -->
-<div class="container mb-5">
-  <div class="text-center mb-5">
-    <div class="top-badge">POPULAR COURSE</div>
+<!-- Error Message -->
+<div class="alert alert-danger" *ngIf="error" role="alert">
+  {{ error }}
+</div>
+<!-- Popular Courses -->
+
+<div class="container mt-3">
+  <div class="text-center">
+    <div class="top-badge">
+      {{ isLoggedIn ? "RECOMMENDED COURSES" : "POPULAR COURSES" }}
+    </div>
     <h1 class="course-title">
-      Top Courses In Demand Right Now<br /><span class="special-txt"
-        >Start Your Journey Today</span
-      >
+      {{
+        isLoggedIn
+          ? "Courses Recommended For You"
+          : "Top Courses In Demand Right Now"
+      }}<br /><span class="special-txt">Start Your Journey Today</span>
     </h1>
     <div class="text-end">
       <a href="#" class="load-more">
@@ -17,12 +24,26 @@
         <i class="fa fa-arrow-right"></i>
       </a>
     </div>
+    <!-- searchbar -->
+    <app-search-bar></app-search-bar>
   </div>
 </div>
 
 <!-- //course-card -->
-<app-course-card
-  *ngIf="!isLoading"
-  [courses]="popularCourses"
-></app-course-card>
+<app-course-card *ngIf="!isLoading" [courses]="courses"></app-course-card>
+
+<!-- No Courses Message -->
+<div
+  class="container text-center"
+  *ngIf="!isLoading && courses.length === 0 && !error"
+>
+  <p class="h4 text-muted">
+    {{
+      isLoggedIn
+        ? "No recommendations available yet. Complete your profile to get personalized recommendations!"
+        : "No courses available at the moment."
+    }}
+  </p>
+</div>
+
 <app-footer></app-footer>

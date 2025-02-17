@@ -34,10 +34,6 @@
           <p class="course-description">
             {{ courseDetail[0].description }}
           </p>
-          <h4 class="mt-4">WHAT WILL I LEARN FROM THIS COURSE?</h4>
-          <ul class="course-description">
-            <li>{{ courseDetail[0].skills }}</li>
-          </ul>
         </div>
         <!-- Other tab contents would go here -->
       </div>
@@ -65,9 +61,10 @@
           <span>Enrollment</span>
           <span>20 Students</span>
         </div>
+
         <div class="info-item">
           <span>Your Rating</span>
-          <span>Start</span>
+        <app-star-rating></app-star-rating>
         </div>
         <button class="buy-now-btn">Rate this course</button>
       </div>
