@@ -1,1 +1,8 @@
 <mat-toolbar color="primary"></mat-toolbar>
+<mat-icon *ngFor="let star of maxRatingArr ; let index = index"
+(mouseenter)="handleMouseEnter(index)"
+[ngClass]="{checked:selectedStar>index}"
+(mouseleave)="handleMouseLeave()"
+(click)="rating(index)"
+
+>star</mat-icon>

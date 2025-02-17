@@ -5,12 +5,17 @@ import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../../services/course.service';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
-import { StarRatingComponent } from "../star-rating/star-rating.component";
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, LoaderComponent, StarRatingComponent],
+  imports: [
+    HeaderComponent,
+    CommonModule,
+    LoaderComponent,
+    StarRatingComponent,
+  ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss',
 })
@@ -19,7 +24,7 @@ export class CourseDetailComponent implements OnInit {
   courseDetail: Course[] = [];
   isLoading = false;
   error = '';
-  activeTab = 'overview';
+  useRating: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +49,6 @@ export class CourseDetailComponent implements OnInit {
     this.courseService.getCourseDetailsById(this.courseId).subscribe({
       next: (res) => {
         this.courseDetail = res.results.recommendations;
-        console.log(res.results.recommendations);
         this.isLoading = false;
       },
       error: (err) => {
@@ -76,10 +80,8 @@ export class CourseDetailComponent implements OnInit {
     );
   }
 
-  formatRating(rating: number | null): string {
-    return rating ? rating.toFixed(1) : 'No ratings yet';
-  }
-  setActiveTab(tab: string): void {
-    this.activeTab = tab;
+  handleRating(event: number) {
+    this.useRating = event;
+    console.log(`${this.useRating}`);
   }
 }

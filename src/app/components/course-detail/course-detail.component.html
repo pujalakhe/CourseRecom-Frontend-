@@ -63,10 +63,9 @@
         </div>
 
         <div class="info-item">
-          <span>Your Rating</span>
-        <app-star-rating></app-star-rating>
+          <span>Rating this course</span>
+          <app-star-rating (onRating)="handleRating($event)"></app-star-rating>
         </div>
-        <button class="buy-now-btn">Rate this course</button>
       </div>
     </div>
   </div>
