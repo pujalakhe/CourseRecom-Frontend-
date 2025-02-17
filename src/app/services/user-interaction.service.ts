@@ -22,7 +22,7 @@ export class UserInteractionService {
 
   getUserHistory(userId: string): Observable<InteractionHistory> {
     return this.http.get<InteractionHistory>(
-      `${UtilityService.APIbaseUrl}interaction/history/?user_id=${userId}`
+      `${UtilityService.APIbaseUrl}/interaction/history/?user_id=${userId}`
     );
   }
 }

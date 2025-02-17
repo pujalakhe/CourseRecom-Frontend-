@@ -9,6 +9,7 @@ export interface Course {
   view_count: number;
   rating_count: number;
   average_rating: number | null;
+  skills: string;
 }
 
 export interface CourseSearchResponse {
@@ -18,8 +19,7 @@ export interface CourseSearchResponse {
 
   results: {
     message: string;
-
-    recommendations: Course[];
+        recommendations: Course[];
   };
 }
 

@@ -31,10 +31,15 @@ export class CourseService {
   }
 
   getPopularCourses(): Observable<popularCoursesResponse> {
-    console.log('getPopularCourses');
-
     return this.http.get<popularCoursesResponse>(
       UtilityService.APIbaseUrl + '/popular-courses/'
+    );
+  }
+  getCourseDetailsById(courseId: any): Observable<CourseSearchResponse> {
+    let params = new HttpParams().set('course_id', courseId);
+    return this.http.get<CourseSearchResponse>(
+      `${UtilityService.APIbaseUrl}/search/`,
+      { params: params }
     );
   }
 }

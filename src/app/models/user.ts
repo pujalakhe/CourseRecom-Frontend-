@@ -15,3 +15,7 @@ export interface UserResponse {
   user: User;
   tokens: JwtToken;
 }
+export interface AuthData {
+  tokens: JwtToken;
+  user: any;
+}

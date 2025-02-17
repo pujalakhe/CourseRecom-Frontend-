@@ -29,10 +29,11 @@ export class UserHistoryComponent implements OnInit {
     this.loadHistory();
   }
 
-  private loadHistory(): void {
+  loadHistory() {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       this.isLoading = true;
+
       this.userInteractionService
         .getUserHistory(currentUser.id.toString())
         .subscribe({
