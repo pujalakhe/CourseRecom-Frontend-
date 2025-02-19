@@ -6,6 +6,9 @@ import { CourseService } from '../../services/course.service';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { HttpClient } from '@angular/common/http';
+import { UtilityService } from '../../services/utility.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -28,7 +31,9 @@ export class CourseDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private http: HttpClient,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +55,8 @@ export class CourseDetailComponent implements OnInit {
       next: (res) => {
         this.courseDetail = res.results.recommendations;
         this.isLoading = false;
+        //  Track the course view after successfully loading course details
+        this.trackCourseView();
       },
       error: (err) => {
         console.log(err);
@@ -58,6 +65,21 @@ export class CourseDetailComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  trackCourseView() {
+    const payload = {
+      user_id: this.authService.getUserId(), // Get user ID from auth service
+      course_id: this.courseId,
+      interaction_type: 'view',
+    };
+
+    this.http
+      .post(`${UtilityService.APIbaseUrl}/interaction/`, payload)
+      .subscribe({
+        next: () => console.log('Course view recorded'),
+        error: (err) => console.error('Error recording course view:', err),
+      });
   }
   starsArray(rating: number): string[] {
     const fullStars = Math.floor(rating);
@@ -84,4 +106,6 @@ export class CourseDetailComponent implements OnInit {
     this.useRating = event;
     console.log(`${this.useRating}`);
   }
+
+
 }
