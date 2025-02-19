@@ -95,7 +95,10 @@ export class AuthService {
       return null;
     }
   }
-
+  getUserId(): number | null {
+    const currentUser = this.getCurrentUser();
+    return currentUser ? currentUser.id : null;
+  }
   getTokens(): LoginResponse['tokens'] | null {
     try {
       const authData = this.getAuthData();

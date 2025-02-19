@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { RouterModule } from '@angular/router';
+
 import { CommonModule } from '@angular/common';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 
@@ -12,8 +12,6 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  isAuthenticated = false;
-  authService = inject(AuthService);
-  router = inject(Router);
+
   links = ['home', 'about', 'courses', 'contact'];
 }
