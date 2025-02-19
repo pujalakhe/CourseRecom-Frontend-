@@ -80,21 +80,6 @@
   }
 }
 
-.clear-search-btn {
-  background-color: #6c47ff;
-  color: white;
-  border: none;
-  padding: 12px 32px; /* Converted 0.75rem 2rem to 12px 32px */
-  border-radius: 25px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.clear-search-btn:hover {
-  background-color: #5535cc;
-}
-
 /* Add animation */
 @keyframes fadeIn {
   from {
@@ -109,4 +94,18 @@
 
 .no-results-container {
   animation: fadeIn 0.3s ease-out;
+}
+
+.load-more {
+  background-color: var(--color-line);
+  padding: 10px 30px;
+  border-radius: 25px;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  gap: 10px;
+  &:hover {
+    background-color: purple;
+    color: white;
+  }
 }

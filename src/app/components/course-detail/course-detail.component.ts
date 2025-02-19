@@ -9,6 +9,7 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { HttpClient } from '@angular/common/http';
 import { UtilityService } from '../../services/utility.service';
 import { AuthService } from '../../services/auth.service';
+import { CourseInteractionService } from '../../course-interaction.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -28,15 +29,19 @@ export class CourseDetailComponent implements OnInit {
   isLoading = false;
   error = '';
   useRating: number = 0;
+  userId: number | null = null;
+  viewTracked: boolean = false; // To track if the view has been recorded
 
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private courseInteractionService: CourseInteractionService
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.route.queryParamMap.subscribe((params) => {
       this.courseId = params.get('id');
 
@@ -55,8 +60,12 @@ export class CourseDetailComponent implements OnInit {
       next: (res) => {
         this.courseDetail = res.results.recommendations;
         this.isLoading = false;
-        //  Track the course view after successfully loading course details
-        this.trackCourseView();
+        // Track the course view if it hasn't been tracked already
+        if (!this.viewTracked) {
+          console.log('called');
+          this.trackCourseView();
+          this.viewTracked = true; // Mark as tracked
+        }
       },
       error: (err) => {
         console.log(err);
@@ -101,11 +110,22 @@ export class CourseDetailComponent implements OnInit {
       []
     );
   }
-
-  handleRating(event: number) {
-    this.useRating = event;
-    console.log(`${this.useRating}`);
+  onRatingChanged(rating: number) {
+    console.log('User rated:', rating);
+    this.submitRating(rating);
   }
-
-
+  submitRating(rating: number) {
+    const payload = {
+      user_id: this.authService.getUserId(), // Get user ID from auth service
+      course_id: this.courseId,
+      interaction_type: 'rate',
+      rating: rating,
+    };
+    this.http
+      .post(`${UtilityService.APIbaseUrl}/interaction/`, payload)
+      .subscribe({
+        next: () => console.log('Course Rate recorded'),
+        error: (err) => console.error('Error recording course rate:', err),
+      });
+  }
 }

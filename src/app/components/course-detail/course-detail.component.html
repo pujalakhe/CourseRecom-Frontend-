@@ -64,7 +64,9 @@
 
         <div class="info-item">
           <span>Rate this course</span>
-          <app-star-rating (onRating)="handleRating($event)"></app-star-rating>
+          <app-star-rating
+            (onRating)="onRatingChanged($event)"
+          ></app-star-rating>
         </div>
       </div>
     </div>

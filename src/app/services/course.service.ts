@@ -9,12 +9,13 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class CourseService {
-  constructor(private http: HttpClient,private authService:AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
   searchCourses(
     searchQuery: string,
     rating?: number | null,
     levels?: string | null,
-    university?: string | null
+    university?: string | null,
+    pageUrl?: string
   ): Observable<CourseSearchResponse> {
     console.log('Searching for:', searchQuery);
 
@@ -23,12 +24,10 @@ export class CourseService {
     params = levels ? params.append('difficulty_level', levels) : params;
     params = university ? params.append('university', university) : params;
 
-    return this.http.get<CourseSearchResponse>(
-      UtilityService.APIbaseUrl + '/search/',
-      {
-        params: params,
-      }
-    );
+    const apiUrl = pageUrl || `${UtilityService.APIbaseUrl}/search/`;
+    return this.http.get<CourseSearchResponse>(apiUrl, {
+      params: params,
+    });
   }
 
   getPopularCourses(): Observable<popularCoursesResponse> {
@@ -48,11 +47,9 @@ export class CourseService {
     userId: string,
     pageUrl?: string
   ): Observable<CourseSearchResponse> {
-     const apiUrl = pageUrl || `${UtilityService.APIbaseUrl}/recommend/`;
-    return this.http.get<CourseSearchResponse>(apiUrl,
-      {
-        params: new HttpParams().set('user_id', userId),
-      }
-    );
+    const apiUrl = pageUrl || `${UtilityService.APIbaseUrl}/recommend/`;
+    return this.http.get<CourseSearchResponse>(apiUrl, {
+      params: new HttpParams().set('user_id', userId),
+    });
   }
 }
