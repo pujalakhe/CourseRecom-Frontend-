@@ -34,8 +34,11 @@
           <p class="course-description">
             {{ courseDetail[0].description }}
           </p>
+          <h3>Get Started</h3>
+          <a [href]="courseDetail[0].url" target="_blank">{{
+            courseDetail[0].url
+          }}</a>
         </div>
-        <!-- Other tab contents would go here -->
       </div>
     </div>
 
