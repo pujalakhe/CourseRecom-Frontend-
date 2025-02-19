@@ -26,7 +26,6 @@ export const authInterceptor: HttpInterceptorFn = (
 
   const authData = getAuthData();
   if (!authData) {
-    router.navigate(['/login']);
     return next(req);
   }
 
@@ -93,6 +92,7 @@ function handleUnauthorizedError(
         console.error('Token refresh failed:', refreshError);
         localStorage.removeItem('AUTH_DATA');
         router.navigate(['/login']);
+        // Allow components or guards to decide if redirection is necessary
         return throwError(() => refreshError);
       })
     );
