@@ -4,7 +4,7 @@ import {
   UserInteractionService,
 } from '../../services/user-interaction.service';
 import { AuthService } from '../../services/auth.service';
-import { RouterModule } from '@angular/router';
+import { Route, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 
@@ -22,7 +22,8 @@ export class UserHistoryComponent implements OnInit {
 
   constructor(
     private userInteractionService: UserInteractionService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -58,5 +59,10 @@ export class UserHistoryComponent implements OnInit {
       hour: '2-digit',
       minute: '2-digit',
     });
+  }
+  navigateTo(){
+    this.router.navigate(['/course-detail'],{
+      queryParams:{id:this.interactions[0].course_id}
+    })
   }
 }

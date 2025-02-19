@@ -29,7 +29,7 @@
           </span>
         </div>
       </div>
-      <a [routerLink]="['/course', interaction.course_id]" class="view-course">
+      <a  class="view-course" (click)="navigateTo()">
         View Course <i class="fa fa-arrow-right"></i>
       </a>
     </div>
