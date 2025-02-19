@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { CourseSearchResponse, popularCoursesResponse } from '../models/course';
 import { UtilityService } from './utility.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private authService:AuthService) {}
   searchCourses(
     searchQuery: string,
     rating?: number | null,
@@ -44,15 +45,14 @@ export class CourseService {
   }
 
   getContentBasedRecommendations(
-    userId: string
+    userId: string,
+    pageUrl?: string
   ): Observable<CourseSearchResponse> {
-    return this.http.get<CourseSearchResponse>(
-      `${UtilityService.APIbaseUrl}/recommend/`,
+     const apiUrl = pageUrl || `${UtilityService.APIbaseUrl}/recommend/`;
+    return this.http.get<CourseSearchResponse>(apiUrl,
       {
         params: new HttpParams().set('user_id', userId),
       }
     );
   }
-
-  
 }

@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
 import { Course } from '../../models/course';
 import { AuthService } from '../../services/auth.service';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-course',
@@ -29,6 +30,8 @@ export class CourseComponent implements OnInit {
   error: string = '';
   isLoggedIn: boolean = false;
   currentUserId: string | null = null;
+  nextPageUrl: string | null = null; // Store next page URL
+  previousPageUrl: string | null = null; // Store previous page URL
   constructor(
     private courseService: CourseService,
     private authService: AuthService
@@ -63,17 +66,19 @@ export class CourseComponent implements OnInit {
     });
   }
 
-  fetchRecommendedCourses() {
+  fetchRecommendedCourses(pageUrl?: string) {
     if (!this.currentUserId) {
       this.fetchPopularCourses();
       return;
     }
     this.isLoading = true;
     this.courseService
-      .getContentBasedRecommendations(this.currentUserId)
+      .getContentBasedRecommendations(this.currentUserId, pageUrl)
       .subscribe({
         next: (response) => {
-          this.courses = response.results.recommendations;
+          this.courses = [...this.courses, ...response.results.recommendations];
+          this.nextPageUrl = response.next; // Update next page URL
+          this.previousPageUrl = response.previous; // Update previous page URL
           this.isLoading = false;
         },
         error: (error) => {
@@ -81,5 +86,17 @@ export class CourseComponent implements OnInit {
           this.fetchPopularCourses(); // Fallback to popular courses
         },
       });
+  }
+
+  loadPreviousCourses() {
+    if (this.previousPageUrl) {
+      this.fetchRecommendedCourses(this.previousPageUrl);
+    }
+  }
+
+  loadNextCourses() {
+    if (this.nextPageUrl) {
+      this.fetchRecommendedCourses(this.nextPageUrl);
+    }
   }
 }

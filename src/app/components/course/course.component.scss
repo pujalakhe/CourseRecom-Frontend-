@@ -12,7 +12,12 @@
   border-radius: 25px;
   display: inline-flex;
   align-items: center;
+  border: none;
   gap: 10px;
+  &:hover {
+    background-color: purple;
+    color: white;
+  }
 }
 
 .course-title {
