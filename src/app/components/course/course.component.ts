@@ -37,44 +37,38 @@ export class CourseComponent implements OnInit {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
       const currentUser = this.authService.getCurrentUser();
-      if (currentUser?.id) {
-        this.currentUserId = currentUser.id.toString();
-        this.fetchRecommendedCourses();
-      } else {
-        // Fallback to popular courses if user ID is not available
-        this.error = 'Unable to load user data';
+      if (!currentUser?.id) {
         this.fetchPopularCourses();
+        return;
       }
+      this.currentUserId = currentUser.id.toString();
+      this.fetchRecommendedCourses();
     } else {
       this.fetchPopularCourses();
     }
   }
-  async fetchPopularCourses() {
+
+  fetchPopularCourses() {
     this.isLoading = true;
-    await this.courseService.getPopularCourses().subscribe({
-      next: (response) => {
-        this.isLoading = false;
-        this.courses = response.popular_courses;
-      },
-      error: (error) => {
-        console.error('Error fetching courses:', error);
+    this.courseService.getPopularCourses().subscribe({
+      next: (res) => {
+        this.courses = res.popular_courses;
         this.isLoading = false;
       },
-      complete: () => {
+      error: (err) => {
+        console.error(err);
         this.isLoading = false;
+        this.error = 'Failed to fetch courses';
       },
     });
   }
+
   fetchRecommendedCourses() {
     if (!this.currentUserId) {
-      this.error = 'User ID not available';
       this.fetchPopularCourses();
       return;
     }
-
     this.isLoading = true;
-    this.error = '';
-
     this.courseService
       .getContentBasedRecommendations(this.currentUserId)
       .subscribe({
@@ -84,9 +78,7 @@ export class CourseComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error fetching recommended courses:', error);
-          // this.error = 'Failed to load recommended courses';
-          // Fallback to popular courses if recommendations fail
-          this.fetchPopularCourses();
+          this.fetchPopularCourses(); // Fallback to popular courses
         },
       });
   }
