@@ -38,13 +38,18 @@
       *ngFor="let course_category of courseCategories; let i = index"
       [ngStyle]="{ 'background-color': getBackgroundColor(i) }"
     >
-      <section class="d-flex align-items-center">
+      <section class="d-flex align-items-center ">
         <img
           [src]="course_category.course_img"
           alt="{{ course_category.course_name }} Image"
           class="course-img mt-2 px-2"
         />
-        <span class="px-1 semi-bold-sm">{{ course_category.course_name }}</span>
+        <p
+          class="mb-0 semi-bold-sm"
+          (click)="getCategory(course_category.course_name)"
+        >
+          {{ course_category.course_name }}
+        </p>
       </section>
     </div>
   </div>
