@@ -1,24 +1,61 @@
-<app-header [title]="'Course'" [links]="['home', 'contact']"></app-header>
-<!-- searchbar -->
-<app-search-bar></app-search-bar>
-<!-- wind surf -->
-<div class="container mb-5">
-  <div class="text-center mb-5">
-    <div class="top-badge">POPULAR COURSE</div>
-    <h1 class="course-title">
-      Top Courses In Demand Right Now<br /><span class="special-txt"
-        >Start Your Journey Today</span
-      >
-    </h1>
-    <div class="text-end">
-      <a href="#" class="load-more">
-        Load More Course
-        <i class="fa fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- //course-card -->
-   <app-course-card></app-course-card>
+<app-header [title]="'Courses'" [links]="['home', 'contact']"></app-header>
+<app-loader *ngIf="isLoading"></app-loader>
+<!-- Error Message -->
+<div class="alert alert-danger" *ngIf="error" role="alert">
+  {{ error }}
 </div>
+<!-- Popular Courses -->
+
+<div class="container mt-3">
+  <div class="text-center">
+    <div class="top-badge">
+      {{ isLoggedIn ? "RECOMMENDED COURSES" : "POPULAR COURSES" }}
+    </div>
+    <h1 class="course-title">
+      {{
+        isLoggedIn
+          ? "Courses Recommended For You"
+          : "Top Courses In Demand Right Now"
+      }}<br /><span class="special-txt">Start Your Journey Today</span>
+    </h1>
+    <!-- //Pagination -->
+    <div class="d-flex justify-content-end gap-3">
+      <button
+        class="load-more"
+        *ngIf="previousPageUrl && !isLoading"
+        (click)="fetchRecommendedCourses(previousPageUrl)"
+      >
+        <i class="fa fa-arrow-left"></i> Previous
+      </button>
+
+      <button
+        class="load-more"
+        *ngIf="nextPageUrl && !isLoading"
+        (click)="fetchRecommendedCourses(nextPageUrl)"
+      >
+        Next <i class="fa fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <!-- searchbar -->
+    <app-search-bar></app-search-bar>
+  </div>
+</div>
+
+<!-- //course-card -->
+<app-course-card *ngIf="!isLoading" [courses]="courses"></app-course-card>
+<!-- No Courses Message -->
+<div
+  class="container text-center"
+  *ngIf="!isLoading && courses.length === 0 && !error"
+>
+  <p class="h4 text-muted">
+    {{
+      isLoggedIn
+        ? "No recommendations available yet. Complete your profile to get personalized recommendations!"
+        : "No courses available at the moment."
+    }}
+  </p>
+</div>
+
 <app-footer></app-footer>

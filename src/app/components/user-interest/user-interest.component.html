@@ -1,0 +1,64 @@
+<div class="interest-container">
+  <h2>Choose Your Interests</h2>
+  <p class="subtitle">
+    Select categories and skill levels to get personalized course
+    recommendations
+  </p>
+
+  <div class="toggle-all">
+    <button
+      class="toggle-btn"
+      (click)="toggleAll()"
+      [class.active]="allSelected"
+    >
+      <i
+        class="fa"
+        [class.fa-check-circle]="allSelected"
+        [class.fa-circle-thin]="!allSelected"
+      ></i>
+      {{ allSelected ? "Deselect All" : "Select All" }}
+    </button>
+  </div>
+
+  <div class="categories-grid">
+    @for (category of categories; track category.id) {
+    <div
+      class="category-card"
+      [class.selected]="category.selected"
+      (click)="toggleCategory(category)"
+    >
+      <div class="category-header">
+        <span class="category-name">{{ category.name }}</span>
+        <span class="selection-indicator">
+          <i
+            class="fa"
+            [class.fa-check-circle]="category.selected"
+            [class.fa-circle-thin]="!category.selected"
+          ></i>
+        </span>
+      </div>
+
+      @if (category.selected) {
+      <div class="skill-levels">
+        @for (level of skillLevels; track level) {
+        <button
+          class="skill-btn"
+          [class.active]="category.skillLevel === level"
+          (click)="updateSkillLevel(category, level); $event.stopPropagation()"
+        >
+          {{ level | titlecase }}
+        </button>
+        }
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <div class="action-buttons">
+    <button class="save-btn" (click)="saveInterests()">
+      <i class="fa fa-save"></i>
+      Save Interests
+    </button>
+  </div>
+</div>

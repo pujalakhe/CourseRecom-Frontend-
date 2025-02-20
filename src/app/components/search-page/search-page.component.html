@@ -10,14 +10,34 @@
   [placeholderVal]="'Search  for other courses...'"
 ></app-search-bar>
 
-<div class="search-container px-3">
+<section class="container-fluid">
+  <!-- Left side filter button -->
   <div class="filter-button" (click)="openFilters()">
     <i class="fa fa-sliders" aria-hidden="true"></i>
     Customize your Search
   </div>
 
-  <app-filter-modal (close)="onFilterClose()" #filterModal> </app-filter-modal>
-</div>
+  <!-- Right side navigation buttons -->
+  <div class="d-flex gap-2 justify-content-end">
+    <button
+      class="load-more"
+      *ngIf="previousPageUrl && !isLoading"
+      (click)="fetchCourses(previousPageUrl)"
+    >
+      <i class="fa fa-arrow-left"></i> Previous
+    </button>
+
+    <button
+      class="load-more"
+      *ngIf="nextPageUrl && !isLoading"
+      (click)="fetchCourses(nextPageUrl)"
+    >
+      Next <i class="fa fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <app-filter-modal (close)="onFilterClose()" #filterModal></app-filter-modal>
+</section>
 <app-loader *ngIf="isLoading"></app-loader>
 
 <!-- Your search results here -->

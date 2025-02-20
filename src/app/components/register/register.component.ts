@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from '../../services/register.service';
 import { LoaderComponent } from '../loader/loader.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastrService: ToastrService,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -61,11 +63,11 @@ export class RegisterComponent implements OnInit {
   }
   registerUser() {
     this.isloading = true;
-    this.registerService.signUp(this.registerForm.value).subscribe({
+    this.authService.login(this.registerForm.value, '/signup/').subscribe({
       next: (res) => {
         this.isloading = false;
         this.toastrService.success('User Registered Successfully!', 'Success');
-        this.router.navigate(['login']);
+        this.router.navigate(['user-interest']);
       },
       error: () => {
         this.toastrService.error(

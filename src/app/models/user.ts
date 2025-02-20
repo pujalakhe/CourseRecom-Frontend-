@@ -1,10 +1,10 @@
 export interface User {
-  first_name?: string;
-  last_name?: string;
+  id: number;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
   phone_number?: string;
-  jwt_token?: JwtToken;
 }
 export interface JwtToken {
   access: string;
@@ -14,4 +14,8 @@ export interface UserResponse {
   message: string;
   user: User;
   tokens: JwtToken;
+}
+export interface AuthData {
+  tokens: JwtToken;
+  user: any;
 }

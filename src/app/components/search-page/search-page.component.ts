@@ -42,6 +42,9 @@ export class SearchPageComponent implements OnInit {
   isDataFound: boolean = true;
   rating: number | null = null;
   level: string | null = null;
+  university: string | null = '';
+  nextPageUrl: string | null = null; // Store next page URL
+  previousPageUrl: string | null = null; // Store previous page URL
 
   constructor(
     private filterService: FilterService,
@@ -57,20 +60,31 @@ export class SearchPageComponent implements OnInit {
     });
   }
 
-  fetchCourses() {
+  fetchCourses(pageUrl?: string) {
     if (!this.searchedInput) return;
     this.isLoading = true;
     this.courseService
-      .searchCourses(this.searchedInput, this.rating, this.level)
+      .searchCourses(
+        this.searchedInput,
+        this.rating,
+        this.level,
+        this.university,
+        pageUrl
+      )
       .subscribe({
         next: (response) => {
-          this.courseLists = response.results.recommendations;
+          this.isLoading = true;
+          this.courseLists = [
+            ...this.courseLists,
+            ...response.results.recommendations,
+          ];
           this.isDataFound = this.courseLists.length > 0;
+          this.nextPageUrl = response.next; // Update next page URL
+          this.previousPageUrl = response.previous; // Update previous page URL
+          this.isLoading = false;
         },
         error: (error) => {
           console.error('Search error', error);
-        },
-        complete: () => {
           this.isLoading = false;
         },
       });
@@ -83,7 +97,9 @@ export class SearchPageComponent implements OnInit {
     // Handle filter changes
     this.rating = this.filterModal.selectedRating;
     this.level = this.filterModal.selectedLevel;
-    if (!this.rating && !this.level) return;
+    this.university = this.filterModal.selectedUniversity;
+
+    if (!this.rating && !this.level && !this.university) return;
     this.fetchCourses();
   }
 }

@@ -1,29 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { RouterModule } from '@angular/router';
+
 import { CommonModule } from '@angular/common';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, UserProfileComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent implements OnInit {
-  isAuthenticated = false;
-  authService = inject(AuthService);
-  router = inject(Router);
-  links = ['home', 'about', 'courses', 'contact'];
-  ngOnInit(): void {
-    this.isAuthenticated = this.authService.isLoggedIn();
+export class NavbarComponent {
 
-    // Subscribe to auth state changes
-    this.authService.isAuthenticated$.subscribe((authStatus) => {
-      this.isAuthenticated = authStatus;
-    });
-  }
-  logout(): void {
-    this.authService.logout();
-  }
+  links = ['home', 'about', 'courses', 'contact'];
 }

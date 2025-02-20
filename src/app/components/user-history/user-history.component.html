@@ -1,0 +1,44 @@
+<app-header [title]="'My History'" [links]="['home']"></app-header>
+<div class="history-container">
+  <h2>Course Interaction History</h2>
+
+  <div class="loading-spinner" *ngIf="isLoading">
+    <i class="fa fa-spinner fa-spin"></i> Loading history...
+  </div>
+
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="history-list" *ngIf="!isLoading && interactions.length > 0">
+    <div class="history-item" *ngFor="let interaction of interactions">
+      <div class="course-info">
+        <h3>{{ interaction.course_name }}</h3>
+        <p class="timestamp">{{ formatDate(interaction.timestamp) }}</p>
+      </div>
+      <div class="interaction-details">
+        <span class="interaction-type">{{ interaction.interaction_type }}</span>
+        <div class="rating" *ngIf="interaction.rating">
+          <span class="stars">
+            <i
+              *ngFor="let star of [1, 2, 3, 4, 5]"
+              class="fa"
+              [class.fa-star]="star <= interaction.rating"
+              [class.fa-star-o]="star > interaction.rating"
+            ></i>
+          </span>
+        </div>
+      </div>
+      <a  class="view-course" (click)="navigateTo()">
+        View Course <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="no-history" *ngIf="!isLoading && interactions.length === 0">
+    <p>No course interactions found.</p>
+    <button class="btn btn-primary" routerLink="/courses">
+      Browse Courses
+    </button>
+  </div>
+</div>
