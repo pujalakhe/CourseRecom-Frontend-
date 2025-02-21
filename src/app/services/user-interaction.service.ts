@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UtilityService } from './utility.service';
+import { UserInterest } from '../models/user';
 export interface CourseInteraction {
   course_name: string;
   interaction_type: string;
@@ -14,6 +15,7 @@ export interface InteractionHistory {
   user_id: string;
   interaction_history: CourseInteraction[];
 }
+
 @Injectable({
   providedIn: 'root',
 })
@@ -24,5 +26,9 @@ export class UserInteractionService {
     return this.http.get<InteractionHistory>(
       `${UtilityService.APIbaseUrl}/interaction/history/?user_id=${userId}`
     );
+  }
+
+  saveUserInterests(data: UserInterest): Observable<any> {
+    return this.http.post<any>(`${UtilityService.APIbaseUrl}/interests/`, data);
   }
 }

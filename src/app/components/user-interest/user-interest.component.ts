@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { UserInteractionService } from '../../services/user-interaction.service';
 
 interface Category {
   id: string;
@@ -30,38 +31,38 @@ export class UserInterestComponent implements OnInit {
       id: 'Business',
       name: 'Business',
       selected: false,
-      skillLevel: 'beginner',
     },
     {
       id: 'Science',
       name: 'Science',
       selected: false,
-      skillLevel: 'beginner',
     },
     {
-      id: 'health-Medicine',
+      id: 'Health & Medicine',
       name: 'Health & Medicine',
       selected: false,
-      skillLevel: 'beginner',
     },
     {
-      id: 'arts-humanities',
+      id: 'Arts & Humanities',
       name: 'Arts & Humanities',
       selected: false,
-      skillLevel: 'beginner',
     },
     {
-      id: 'social-science',
-      name: 'Social Science',
+      id: 'Social Sciences',
+      name: 'Social Sciences',
       selected: false,
-      skillLevel: 'beginner',
     },
   ];
 
-  skillLevels = ['beginner', 'intermediate', 'advanced'];
+  skillLevels = ['beginner', 'intermediate', 'advanced', 'Conversant'];
+  selectedSkillLevel: string = ''; // Single skill level for all categories
   allSelected = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private userInteractionService: UserInteractionService
+  ) {}
 
   ngOnInit(): void {
     this.loadUserInterests();
@@ -70,14 +71,23 @@ export class UserInterestComponent implements OnInit {
   private loadUserInterests(): void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
-      const userInterests = localStorage.getItem(`interests_${currentUser.id}`);
-      if (userInterests) {
-        const savedInterests = JSON.parse(userInterests);
-        this.categories = this.categories.map((cat) => {
-          const saved = savedInterests.find((s: any) => s.id === cat.id);
-          return saved ? { ...cat, ...saved } : cat;
-        });
-        // Update allSelected based on loaded data
+      const savedInterestsStr = localStorage.getItem(
+        `interests_${currentUser.id}`
+      );
+
+      if (savedInterestsStr) {
+        const savedInterests = JSON.parse(savedInterestsStr);
+        // Update categories based on saved interests
+        this.categories = this.categories.map((cat) => ({
+          ...cat,
+          selected: savedInterests.categories.includes(cat.name),
+          skillLevel: savedInterests.difficulty_level,
+        }));
+
+        // Set selected skill level
+        this.selectedSkillLevel = savedInterests.difficulty_level || 'beginner';
+
+        // Update "Select All" checkbox status
         this.allSelected = this.categories.every((cat) => cat.selected);
       }
     }
@@ -87,25 +97,16 @@ export class UserInterestComponent implements OnInit {
     this.allSelected = !this.allSelected;
     this.categories.forEach((category) => {
       category.selected = this.allSelected;
-      if (this.allSelected && !category.skillLevel) {
-        category.skillLevel = 'beginner';
-      }
     });
   }
 
   toggleCategory(category: Category): void {
     category.selected = !category.selected;
-    if (category.selected && !category.skillLevel) {
-      category.skillLevel = 'beginner';
-    }
-    // Update allSelected based on individual selections
     this.allSelected = this.categories.every((cat) => cat.selected);
   }
 
-  updateSkillLevel(category: Category, level: string): void {
-    if (category.selected) {
-      category.skillLevel = level as 'beginner' | 'intermediate' | 'advanced';
-    }
+  setSkillLevel(level: string): void {
+    this.selectedSkillLevel = level; // Update the global skill level
   }
 
   saveInterests(): void {
@@ -115,22 +116,32 @@ export class UserInterestComponent implements OnInit {
       return;
     }
 
-    const selectedInterests = this.categories
-      .filter((cat) => cat.selected)
-      .map((cat) => ({
-        id: cat.id,
-        name: cat.name,
-        selected: cat.selected,
-        skillLevel: cat.skillLevel,
-      }));
 
-    // Save to localStorage with user-specific key
+    const selectedCategories = this.categories.filter((cat) => cat.selected);
+    if (selectedCategories.length === 0) {
+      console.warn('No categories selected');
+      return;
+    }
+
+    const payload = {
+      user_id: currentUser.id,
+      categories: selectedCategories.map((cat) => cat.name),
+      difficulty_level: this.selectedSkillLevel || '', // Use selected difficulty or empty string
+    };
+    console.log(payload);
+    // Save to localStorage
     localStorage.setItem(
       `interests_${currentUser.id}`,
-      JSON.stringify(selectedInterests)
+      JSON.stringify(payload)
     );
-    console.log('Saved interests for user:', currentUser.id, selectedInterests);
-    this.router.navigate(['/']);
-    // TODO: Send to backend
+
+    this.userInteractionService.saveUserInterests(payload).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.error('Error saving interests:', error);
+      },
+    });
   }
 }
