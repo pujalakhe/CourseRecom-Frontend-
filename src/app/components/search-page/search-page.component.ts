@@ -75,8 +75,8 @@ export class SearchPageComponent implements OnInit {
         next: (response) => {
           this.isLoading = true;
           this.courseLists = [
-            ...this.courseLists,
             ...response.results.recommendations,
+            ...this.courseLists,
           ];
           this.isDataFound = this.courseLists.length > 0;
           this.nextPageUrl = response.next; // Update next page URL

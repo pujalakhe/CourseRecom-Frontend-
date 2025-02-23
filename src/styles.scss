@@ -8,7 +8,11 @@ body {
   height: 100%;
   margin: 0;
   overflow-x: hidden;
-  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  p {
+    cursor: pointer;
+  }
 }
 p,
 h1,
@@ -23,6 +27,7 @@ h6 {
 a {
   text-decoration: none !important;
   color: inherit !important;
+  cursor: pointer;
 }
 .form-label {
   color: var(--color-placeholder);
