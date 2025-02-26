@@ -29,7 +29,7 @@ export class CourseCategoryService {
     },
     {
       course_id: 5,
-      course_name: 'Graphic adesign',
+      course_name: 'Graphic Design',
       course_img: 'assets/images/category-images/dm.png',
     },
     {
