@@ -19,3 +19,8 @@ export interface AuthData {
   tokens: JwtToken;
   user: any;
 }
+export interface UserInterest {
+  user_id: number;
+  categories: string[];
+  difficulty_level: string;
+}

@@ -37,24 +37,23 @@
           ></i>
         </span>
       </div>
-
-      @if (category.selected) {
-      <div class="skill-levels">
-        @for (level of skillLevels; track level) {
-        <button
-          class="skill-btn"
-          [class.active]="category.skillLevel === level"
-          (click)="updateSkillLevel(category, level); $event.stopPropagation()"
-        >
-          {{ level | titlecase }}
-        </button>
-        }
-      </div>
-      }
     </div>
     }
   </div>
-
+  <!-- Skill level selection for all categories -->
+  <div class="skill-level-selection">
+    <h3 class="subtitle semi-bold-l">Select difficulty Level that you prefer</h3>
+    <div class="skill-levels">
+      <button
+        *ngFor="let level of skillLevels"
+        class="skill-btn "
+        [class.active]="selectedSkillLevel === level"
+        (click)="setSkillLevel(level)"
+      >
+        {{ level | titlecase }}
+      </button>
+    </div>
+  </div>
   <div class="action-buttons">
     <button class="save-btn" (click)="saveInterests()">
       <i class="fa fa-save"></i>
