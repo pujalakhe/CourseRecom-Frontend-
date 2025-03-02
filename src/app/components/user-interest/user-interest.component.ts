@@ -54,7 +54,7 @@ export class UserInterestComponent implements OnInit {
     },
   ];
 
-  skillLevels = ['beginner', 'intermediate', 'advanced', 'Conversant'];
+  skillLevels = ['beginner', 'intermediate', 'advanced'];
   selectedSkillLevel: string = ''; // Single skill level for all categories
   allSelected = false;
 
@@ -115,7 +115,6 @@ export class UserInterestComponent implements OnInit {
       console.error('No user logged in');
       return;
     }
-
 
     const selectedCategories = this.categories.filter((cat) => cat.selected);
     if (selectedCategories.length === 0) {

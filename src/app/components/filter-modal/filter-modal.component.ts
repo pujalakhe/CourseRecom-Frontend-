@@ -19,7 +19,7 @@ export class FilterModalComponent {
     { value: 1.5, stars: 2, label: '1.5 & up' },
   ];
 
-  levels = ['Beginner', 'Intermediate', 'Advanced', 'Conversant'];
+  levels = ['Beginner', 'Intermediate', 'Advanced'];
 
   universities = [
     'University of Michigan',

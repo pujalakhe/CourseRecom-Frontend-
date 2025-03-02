@@ -9,7 +9,7 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { HttpClient } from '@angular/common/http';
 import { UtilityService } from '../../services/utility.service';
 import { AuthService } from '../../services/auth.service';
-import { CourseInteractionService } from '../../course-interaction.service';
+import { CourseInteractionService } from '../../services/course-interaction.service';
 
 @Component({
   selector: 'app-course-detail',

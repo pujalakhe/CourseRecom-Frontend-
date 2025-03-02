@@ -40,6 +40,7 @@ export class CourseService {
     return this.http.get<CourseSearchResponse>(
       `${UtilityService.APIbaseUrl}/search/`,
       { params: params }
+      ,
     );
   }
 
