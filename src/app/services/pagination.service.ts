@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PaginationService {
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
   getPaginatedResults(apiUrl: string): Observable<any> {
     return this.http.get<any>(apiUrl);
   }
