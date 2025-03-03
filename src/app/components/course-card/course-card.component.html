@@ -1,18 +1,16 @@
 <div class="row g-4 mt-3 px-3">
-  <!-- Course card 2 -->
-
   <div class="col-md-4 w-25" *ngFor="let course of courses">
     <div class="course-card">
-      <div class="position-relative">
+      <!-- <div class="position-relative">
         <img
           src="https://source.unsplash.com/random/300x200?sig=${Math.random()}"
           alt="Course 1"
           class="course-image"
         />
-        <span class="course-category">{{ course.difficulty }}</span>
-      </div>
+      </div> -->
       <div class="p-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex justify-content-between mb-3">
+          <p class="course-category">{{ course.difficulty }}</p>
           <div class="rating">
             <ng-container *ngFor="let star of starsArray(course.rating)">
               <i class="fa" [ngClass]="star"></i>
@@ -22,8 +20,6 @@
         </div>
         <h5 class="mb-3">{{ course.name }}</h5>
         <div class="course-info d-flex justify-content-between mb-3">
-          <!-- <span><i class="fa fa-book me-2"></i>Static Lesson 10</span>
-          <span><i class="fa fa-clock-o me-2"></i> Static 19h 30m</span> -->
           <span
             ><i class="fa fa-university" aria-hidden="true"></i>
             {{ course.university }}</span
