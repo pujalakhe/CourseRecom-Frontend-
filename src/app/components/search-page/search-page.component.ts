@@ -74,10 +74,7 @@ export class SearchPageComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.isLoading = true;
-          this.courseLists = [
-            ...response.results.recommendations,
-            ...this.courseLists,
-          ];
+          this.courseLists = [...response.results.recommendations];
           this.isDataFound = this.courseLists.length > 0;
           this.nextPageUrl = response.next; // Update next page URL
           this.previousPageUrl = response.previous; // Update previous page URL

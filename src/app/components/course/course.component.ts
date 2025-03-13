@@ -76,7 +76,7 @@ export class CourseComponent implements OnInit {
       .getContentBasedRecommendations(this.currentUserId, pageUrl)
       .subscribe({
         next: (response) => {
-          this.courses = [...this.courses, ...response.results.recommendations];
+          this.courses = [...response.results.recommendations];
           this.nextPageUrl = response.next; // Update next page URL
           this.previousPageUrl = response.previous; // Update previous page URL
           this.isLoading = false;
